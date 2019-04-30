@@ -16,10 +16,12 @@ if(isset($_POST['id'])
 	$email = $_POST['email'];
 	$name = $_POST['name'];
 	if ($pw==$repw){
-		if($id != "" and
+		if(preg_match("/^\d{8,8}$/",$id) and
+		preg_match("/^(\w+)$/",$acc) and
 		strlen($acc) > 5 and strlen($acc) < 26 and
 		strlen($pw) >5 and strlen($pw) <26 and
-		preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email) and $name != ""
+		preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email) and strlen($pw) > 0 and
+		preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)
 		) {
 			$db = str_con();
 			if ($db){
@@ -57,7 +59,7 @@ if(isset($_POST['id'])
 					} catch (PDOException $e){
 						
 					}
-					$ndir = sprintf("xcopy newuser  %d\\",$id);
+					$ndir = sprintf("xcopy newuser \"./users/%s\\\"",$id);
 					shell_exec($ndir);
 					$ret = "完成";
 				}else{
@@ -75,7 +77,6 @@ if(isset($_POST['id'])
 	}
 }
 
-//$result = shell_exec('mkdir test');
 ?>
 
 <html>

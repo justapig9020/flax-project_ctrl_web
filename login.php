@@ -36,16 +36,9 @@
 			}else{
 				$key = hash('sha256',$pw);
 				if($row["pw"]==$key){
-					include("./include/ip.php");
-					//if (!isset($_SESSION)) {
-						
-					//}
 					session_start();
-					$off = (string)$row["id"];
-					$_SESSION['asd'] = $ip;
-					$ind = sprintf("location:%s/index.php",$row["id"]);
-					echo $_SESSION['asd'];
-					//echo gettype($row["id"])."</br>".$row["id"]."</br>";
+					$_SESSION["user"] = $row["id"];
+					$ind = sprintf("location:users/%s/index.php",$row["id"]);
 					header($ind);
 				}else{
 					$ret = "密碼錯誤";
