@@ -3,6 +3,9 @@
 	<?php
 	include("share/head.php");
 	?>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/css/normal.css">
+
 </head>
 	<?php
 	include("include/connect.php");
@@ -52,11 +55,16 @@
 	}
 	?>
 <body>
-	<?php
+<header>
+<?php
 	$page="login";
 	include("share/_header.php");
 	?>
-	<form id="login" name="form1" method="post" action="">
+</header>
+	<div id="1">
+	<div id="2">
+	<div id="3">
+		<form id="login" name="form1" method="post" action="">
 		<font color="red"><?php echo $ret; ?></font></br>
 		<label>
 		帳號: <input type="text" name="id" /></br>
@@ -64,11 +72,15 @@
 		<label>
 		密碼: <input type="password" name="pw" /></br>
 		</label>
-		<label>
+		<label id="login_button">
 		<input type="submit" value="登入" />
 		</label>
 		<!---<a href="./signUp.php">新增帳號</a>-->
 	</form>
+	</div>
+	</div>
+	</div>
+
 <footer>
 	<?php
 	include("share/_footer.php");

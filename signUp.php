@@ -86,9 +86,11 @@ if(isset($_POST['id'])
 	?>
 </head>
 <body>
+<header>
 	<?php
 	include("share/_header.php");
 	?>
+</header>
 	<form id="login" name="form1" method="post" action="">
 		<font color="red"><?php echo $ret; ?></font></br>
 		<label>

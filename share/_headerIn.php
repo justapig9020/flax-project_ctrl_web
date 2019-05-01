@@ -2,8 +2,9 @@
 <?php
 $n = array(
 	"index"=>"Over View",
-	"project"=>"project",
-	"logout"=>"logout"
+	"project"=>"Project",
+	"newProject"=>"New Project",
+	"logout"=>"Logout"
 );
 foreach ($n as $key=>$value){
 	//echo $file." ".$key."</br>";
