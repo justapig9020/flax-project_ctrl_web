@@ -1,26 +1,17 @@
-<a href="./index.php"><img src="picture/logo.jpg" height="40" weight="40"></a>
+<a href="./index.php"><img src="../image/logo.jpg" height="40" weight="40"></a>
 <?php
-
-if(isset($page)){
-	if ($page == "login")
-	{
-		$text = "新增帳號";
-		$url = "./signUp.php";
-		/*echo"<a href=\"./signUp.php\">新增帳號</a>
-		</br>		
-		";*/
-	}
-}else{
-	$text = "登入";
-	$url = "./login.php";
-	/*echo"<a href=\"./login.php\">登入</a>
-			</br>
-			";
-			*/
+    if (isset($page)) {
+        switch ($page) {
+            case "index":
+                $n = array("註冊"=>"signUp.php");
+                break;
+            case "signUp":
+            default:
+                $n = array("登入"=>"index.php");
+        }
+    }
+foreach ($n as $key=>$value) {
+	echo "<a href=\"".$value."\">".$key."</a>&nbsp";
 }
-echo"<a href=\"$url\">$text</a>
-			</br>"
-//echo "<form action=$url><button type=\"submit\">$text</button></from>"
+
 ?>
-
-
