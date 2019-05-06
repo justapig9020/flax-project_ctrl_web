@@ -53,7 +53,10 @@
 		}else{
 			$ret = "資料庫無法連線 請聯絡管理員</br>";
 		}
-	}else{
+    }else if(isset($_FILES["pfile"])){
+        echo "上傳檔案了呢";
+        move_uploaded_file($_FILES["pfile"]["tmp_name"],"upload/".$_FILES["pfile"]["name"]);
+    }else{
 		$id = $_SESSION["user"];
 		$pname = $_GET["p"];
 		$db = str_con();
@@ -77,7 +80,7 @@
 				echo $e;
 			}
 			if($rows){
-				
+                echo "<from method=\"post\"><input type=\"file\" id=\"pfile\" name=\"pfile\" value=\"新增檔案\"><input type=\"submit\" name=\"submit\"value=\"確認上傳\"></form>";
 			}else{
 				echo "專案不存在";
 			}
