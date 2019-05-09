@@ -18,7 +18,8 @@
 	?>	
 </header>
 <?php
-	$ret = "";
+    $retMesse = "";
+    $retImage = "";
 	if(isset($_POST['id']) and isset($_POST['pw']))
 	{
 		$id = $_POST['id'];
@@ -43,7 +44,7 @@
 				
 			}
 			if(!$row){
-				$ret = "無此帳號";
+				$retMesse = "無此帳號";
 			}else{
 				$key = hash('sha256',$pw);
 				if($row["pw"]==$key){
@@ -51,7 +52,8 @@
 					$_SESSION["ip"] = getIp();
 					header("location:overView.php");
 				}else{
-					$ret = "密碼錯誤";
+                    $retMesse = "密碼錯誤";
+                    $retImage = "<img src=\"image/crycry.png\">";
 				}
 			}
 			$db=null;
@@ -62,7 +64,7 @@
 	}
 ?>
 <form id="login" name="login" method="post" action="">
-	<font color="red"><?php echo $ret; ?></font></br>
+	<font color="red"><?php echo $retMesse; ?></font></br>
 	<label>
 	帳號: <input type="text" name="id" /></br>
 	</label>
@@ -72,8 +74,11 @@
 	<label>
 	<input type="submit" value="登入" />
 	</label>
-	<!---<a href="./signUp.php">新增帳號</a>-->
+    <!---<a href="./signUp.php">新增帳號</a>-->
 </form>
+    <?php
+        echo $retImage;
+    ?>
 <footer>
 	<?php
 	include("share/_footer.php");

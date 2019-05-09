@@ -9,4 +9,5 @@ $n = array(
 foreach ($n as $value=>$key) {
 	echo "<a href=\"".$value."\">".$key."</a>&nbsp";
 }
+echo "hello! ".$_SESSION["user"];
 ?>
