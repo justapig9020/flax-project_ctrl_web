@@ -9,6 +9,7 @@ make
 And set you database's config in iclude/dbconf.php
 
 ## directory construct
+```
 flax-project_ctrl_web
 |--include
 |--libs
@@ -23,6 +24,6 @@ flax-project_ctrl_web
     |--plugins
     |--templates
     |--templates_c
-
+```
 
 
