@@ -1,0 +1,2 @@
+setup:
+	mv include/_dbconf.php include/dbconf.php
