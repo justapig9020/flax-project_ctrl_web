@@ -18,7 +18,7 @@ if (!isset($__NET_WORK__)) {
     function checkIn ()
     {
 	    $chk = false;
-	    if (isset($_SESSION["ip"])) {
+	    if (isset($_SESSION["ip"]) and isset($_SESSION["user"])) {
 		    if ($_SESSION["ip"] == getIp()) {
 		    	$chk = true;
 		    }

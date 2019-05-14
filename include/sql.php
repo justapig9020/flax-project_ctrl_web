@@ -8,8 +8,9 @@ if (!isset ($__SQL__)) {
             //echo $conf;
             $db = new PDO($conf,getDBUser(),getDBPw());
 		} catch (\PDOException $e) {
-			//echo "Error: ".$e."</br>";
-			return null;
+			echo "Error: ".$e."</br>";
+            //return null;
+            exit();
 		} 	
 		return $db;
 	}
