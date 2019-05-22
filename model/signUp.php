@@ -1,7 +1,7 @@
 <?php
 include("../include/network.php");
 if (checkIn()) {
-    header("location:overView.php");
+    header ("location:overView.php");
 }
 include("../include/sql.php");
 if(isset($_POST['id']) 

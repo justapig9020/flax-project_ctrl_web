@@ -17,9 +17,9 @@
 		<h1 class="h3 mb-3 font-weight-normal">聽說是FLAX</h1>
 		<font color="red">{$login_retM}</font></br>
 		<label for="inputEmail" class="sr-only">帳號</label>
-		<input type="text" id="text" class="form-control" placeholder="帳號" required="" autofocus="">
+		<input type="text" id="id" name="id" class="form-control" placeholder="帳號" required="" autofocus="">
 		<label for="inputPassword" class="sr-only">密碼</label>
-		<input type="password" id="inputPassword" class="form-control" placeholder="密碼" required="">
+		<input type="password" id="pw" name="pw" class="form-control" placeholder="密碼" required="">
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button></br>
 		<a class="btn btn-lg btn-outline-success" href="signUp.php">Sign up</a>
 	</form>

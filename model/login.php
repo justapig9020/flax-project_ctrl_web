@@ -1,13 +1,16 @@
 <?php
 //echo __DIR__;
 include("../include/network.php");
+if (checkIn()) {
+    header ("location:overView.php");
+}
 include("../include/sql.php");
 $retMesse = "";
 if(isset($_POST['id']) and isset($_POST['pw']))
 {
-	$id = $_POST['id'];
-$pw = $_POST['pw'];
-		$db = str_con();
+    $id = $_POST['id'];
+    $pw = $_POST['pw'];
+    $db = str_con();
 	if ($db){
 		//echo "連線成功</br>";
 		$sel = "select * from user where account = :id";
