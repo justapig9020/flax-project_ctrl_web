@@ -2,7 +2,7 @@
 //echo __DIR__;
 include("../include/network.php");
 if (checkIn()) {
-    header ("location:overView.php");
+    header ("location:../main/overView.php");
 }
 include("../include/sql.php");
 $retMesse = "";

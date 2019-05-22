@@ -4,9 +4,9 @@ require '../include/sql.php';
 require '../include/network.php';
 $page = "";
 $smarty = new Smarty;
-$smarty->debugging = true;
-$smarty->caching = true;
-$smarty->cache_lifetime = 120;
+//$smarty->debugging = true;
+//$smarty->caching = true;
+//$smarty->cache_lifetime = 120;
 $retMesse = "";
 
 $smarty->assign("login_retM",$retMesse);

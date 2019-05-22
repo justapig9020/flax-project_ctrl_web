@@ -1,7 +1,5 @@
 <?php
 require '../libs/Smarty.class.php';
-require '../include/sql.php';
-require '../include/network.php';
 $page = "login";
 $smarty = new Smarty;
 //$smarty->debugging = true;
