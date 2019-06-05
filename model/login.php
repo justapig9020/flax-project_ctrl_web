@@ -1,9 +1,6 @@
 <?php
 //echo __DIR__;
-include("../include/network.php");
-if (checkIn()) {
-    header ("location:../main/overView.php");
-}
+
 include("../include/sql.php");
 $retMesse = "";
 if(isset($_POST['id']) and isset($_POST['pw']))

@@ -51,7 +51,8 @@ if (!isset ($__SQL__)) {
 		}
         //echo "in fun: ".$retV."</br>";
 		return $retV;
-	}
+    }
+
     function get_premission ($pname,$oid,$uid)
 	{
 		$db = str_con();
@@ -90,7 +91,8 @@ if (!isset ($__SQL__)) {
 		}
         //echo "in fun: ".$retV."</br>";
 		return $retV;
-	}
+    }
+
     function show_files ($pid,$oid,$pname,$sfile){
         $db = str_con();
 		if ($db){
