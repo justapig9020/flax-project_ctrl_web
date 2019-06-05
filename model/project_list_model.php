@@ -9,7 +9,7 @@
  * /
 
 /*projectunselect*/
-
+$prj_exist = 1;
 $db = str_con () ;
 if ($db) {
     //echo"連線成功</br>";
@@ -28,6 +28,8 @@ if ($db) {
     }catch (PDOException$e) {}
     if (!$prjs) {
         $prj_exist = 0;
+    } else {
+        $prj_exist = 1;
     }
     /*show selectable projects*/
 

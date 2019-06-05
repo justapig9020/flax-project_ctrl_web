@@ -18,9 +18,11 @@ if (isset($_GET["oid"]) and isset($_GET["pname"])) {
     include ("../model/project_selected_model.php");
 } else {
     $page = "project_list";
-    include ("../model/project_list_model.php");
+    include ("../model/project_list_model.php");    
+    $smarty->assign ("prjs", $prjs);
+    $smarty->assign ("prj_exist", $prj_exist);
 }
-$smarty->assign ("project_retM",$retMesse);
-$go = sprintf ("%s.tpl",$page);
+$smarty->assign ("project_retM", $retMesse);
+$go = sprintf ("%s.tpl", $page);
 $smarty->display ($go);
 ?>

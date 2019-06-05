@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-05-22 15:34:50
+/* Smarty version 3.1.34-dev-7, created on 2019-06-05 15:04:18
   from 'C:\flax-project_ctrl_web\main\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ce54ffaae38a9_00286997',
+  'unifunc' => 'content_5cf7bdd2670d82_49404864',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4804ab720de22e0cf633dde2d61477e1d1dac856' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\login.tpl',
-      1 => 1558532085,
+      1 => 1559739821,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ce54ffaae38a9_00286997 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf7bdd2670d82_49404864 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "login", 0);
 ?>
 
@@ -48,8 +48,8 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 		<input type="text" id="id" name="id" class="form-control" placeholder="帳號" required="" autofocus="">
 		<label for="inputPassword" class="sr-only">密碼</label>
 		<input type="password" id="pw" name="pw" class="form-control" placeholder="密碼" required="">
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button></br>
-		<a class="btn btn-lg btn-outline-success" href="signUp.php">Sign up</a>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button></br>
+		<a class="btn btn-lg btn-outline-success" href="signUp.php">註冊</a>
 	</form>
 </body>
 </html>
