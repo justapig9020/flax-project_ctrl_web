@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-05-15 18:13:49
+/* Smarty version 3.1.34-dev-7, created on 2019-05-22 17:24:59
   from 'D:\DB\flax-project_ctrl_web\main\templates\signUp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cdc3abd542b87_83362185',
+  'unifunc' => 'content_5ce569cbe152d5_75809211',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df14c36d8282d68446c3c5864460c9d06613b0b4' => 
     array (
       0 => 'D:\\DB\\flax-project_ctrl_web\\main\\templates\\signUp.tpl',
-      1 => 1557936826,
+      1 => 1558538697,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cdc3abd542b87_83362185 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce569cbe152d5_75809211 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
 	<title><?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'title');?>
@@ -37,29 +37,29 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 <header>
 </header>
 <div class="container">
-	<form class="form-signin" id="login" name="form1" method="post" action="">
+	<form class="form-signup" id="login" name="form1" method="post" action="">
 	<div class="alert alert-danger" role="alert">
 		<font color="red"><?php echo $_smarty_tpl->tpl_vars['signUp_retM']->value;?>
 </font>
 	</div>
 		<div class="form-row">
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-12">
 				<label class="sr-only">輸入學號</label>
 				<input class="form-control" type="text" name="id" placeholder="學號" autofocus="" required="">
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-12">
 				<label class="sr-only">輸入姓名</label>
 				<input class="form-control" type="text" name="name" placeholder="姓名" required="">
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-12">
 				<label class="sr-only">輸入帳號</label>
 				<input class="form-control" type="text" name="acc" placeholder="帳號" required="">
 			</div>
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-12">
 				<label class="sr-only">輸入密碼</label>
 				<input class="form-control" type="password" name="pw" placeholder="密碼" required="">
 			</div>
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-12">
 				<label class="sr-only">再輸入一次密碼</label>
 				<input class="form-control" type="password" name="repw" placeholder="再輸入一次密碼" required="">
 			</div>
@@ -67,7 +67,12 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 				<label class="sr-only">輸入電子郵件</label>
 				<input class="form-control" type="email" name="email" placeholder="電子郵件" required="">
 			</div>
-			<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增帳號"></input>
+			<div class="form-group col-md-12">
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增帳號"></input>
+			</div>
+			<div class="form-group col-md-12">
+				<a class="btn btn-lg btn-outline-success" href="index.php">回到登入畫面</a>
+			</div>
 		</div>
 	</form>
 </div>

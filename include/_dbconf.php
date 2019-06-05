@@ -3,15 +3,15 @@ if (!isset ($__DBCONF__)) {
     $__DBCONF__ = 1;
     function getDBUser () 
     {
-        return 'Your_DB_user_name';
+        return 'root';
     }
     function getDBPw ()
     {
-        return 'Your_DB_password';
+        return 'pw4dbf1na1';
     }
     function getDBPort ()
     {
-        return Your_DB_port_number;
+        return 3306;
     }
 }
 ?>
