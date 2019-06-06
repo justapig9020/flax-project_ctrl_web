@@ -1,12 +1,12 @@
+{config_load file="normal.conf" section="project_list"}
 <html>
 <head>
 	<title>{#title#}_{#page#}</title>
    {literal}
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	<link rel="import" href="header.html">
     <!-- Custom styles for this template -->
-	<link rel="stylesheet" type="text/css" href="css/list.css"/>	   
+	<link rel="stylesheet" type="text/css" href="css/normal.css"/>	   
    {/literal}
 </head>
 <body>
