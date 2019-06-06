@@ -11,6 +11,7 @@ try {
         if ($result) {
             $mems = $ins->fetchAll (PDO::FETCH_ASSOC);
         }
+    }
 } catch (PDOException $e) {}
 $db = null;
 ?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-06 17:56:47
+/* Smarty version 3.1.34-dev-7, created on 2019-06-06 22:17:31
   from 'C:\flax-project_ctrl_web\main\templates\project_list.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cf937bf519505_52394742',
+  'unifunc' => 'content_5cf974dbaf71d9_74196479',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cdfebae95fb54140c3aa0e4afd2f11aba155e420' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\project_list.tpl',
-      1 => 1559836593,
+      1 => 1559852201,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf937bf519505_52394742 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf974dbaf71d9_74196479 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "project_list", 0);
 ?>
 
@@ -43,8 +43,6 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
  src="js/header.js"><?php echo '</script'; ?>
 >
 <main role="main" class="container">
-	<font color="red">prj_exist=<?php echo $_smarty_tpl->tpl_vars['prj_exist']->value;?>
-</font></br>
 	<?php if ($_smarty_tpl->tpl_vars['prj_exist']->value == "0") {?>
 		<div class="jumbotron">
 			<h1 class="display-4">哈哈是不是沒有專案齁</h1>
@@ -54,32 +52,28 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 			<a class="btn btn-primary btn-lg" href="#" role="button">新增專案</a>
 		</div>
 	<?php } else { ?>
-	<div class="row">
-		<div class="col-sm-6">
+	<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['prjs']->value, 'row');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
+?>
+		<div class="row">
+		<div class="col-sm-4">
 			<div class="card">
 				<div class="card-header">
-					專案名稱
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">領導者</h5>
-					<p class="card-text">開始日期</p>
-					<a href="#" class="btn btn-primary">詳細希望</a>
+					<?php echo $_smarty_tpl->tpl_vars['row']->value["oid"];?>
+/<?php echo $_smarty_tpl->tpl_vars['row']->value["pname"];?>
+</br>
+					<a href="./project.php?pid=<?php echo $_smarty_tpl->tpl_vars['row']->value["pid"];?>
+" class="btn btn-primary">詳細希望</a>
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6">
-			<div class="card">
-				<div class="card-header">
-					專案名稱
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">領導者</h5>
-					<p class="card-text">開始日期</p>
-					<a href="#" class="btn btn-primary">詳細希望</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	</div>	
+	<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 	<?php }?>
 </main><!-- /.container -->
 <?php echo '<script'; ?>

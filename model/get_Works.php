@@ -12,10 +12,12 @@ try {
     $ins = $db->prepare ($sel);
     if ($ins) {
         $ins->bindParam (':pid', $pid);
+        $ins->bindParam (':wmon', $wmon);
         $result = $ins->execute ();
         if ($result) {
             $works = $ins->fetchAll (PDO::FETCH_ASSOC);
         }
+    }
 } catch (PDOException $e) {}
 $db = null;
 ?>
