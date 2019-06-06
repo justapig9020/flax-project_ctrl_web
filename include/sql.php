@@ -54,6 +54,66 @@ if (!isset ($__SQL__)) {
         //echo "in fun: ".$retV."</br>";
 		return $retV;
     }
+    
+    function new_proj ($pname, $pintr, $uid)
+    {
+        $db = str_con();
+        //echo "in func</br>";
+        $retMess=NULL;
+		if ($db){
+            //echo "連線成功</br>";
+            $sel = "select * form project inner join do_proj on project.id = do_proj.project.id and do_proj.status = 0 where project.name = :pname and do_proj.user_id = :uid";
+            try {
+				$ins = $db->prepare($sel); 
+                if($ins){
+					$ins->bindParam(':uid',$uid);
+					$ins->bindParam(':pname',$pname);
+                    $result = $ins->execute();
+					if($result){
+							$row = $ins->fetchall(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                }
+            } catch (PDOException $e){}
+            if (!$row) {
+                $sel = "insert into project
+                        (name, intr) 
+                        value 
+                        (:pname, :pintr)";
+			    try {
+				    $ins = $db->prepare($sel); 
+				    if($ins){
+                        $ins->bindParam(':pname', $pname);
+					    $ins->bindParam(':pintr',$pintr);
+                        $ins->execute();
+                    }
+                } catch (PDOException $e){}
+                $sel = "insert into do_proj
+                        (user_id, project_id, status) 
+                        value 
+                        (:uid, :pid , 0)";
+			    try {
+				    $ins = $db->prepare($sel); 
+				    if($ins){
+                        $ins->bindParam(':uid', $uid);
+					    $ins->bindParam(':pid',$pid);
+                        $ins->execute();
+                    }
+                } catch (PDOException $e){}
+
+                $retMess = "專案新增完成";
+            } else {
+                $retMess = "專案已存在"; 
+            } 
+		}
+        //echo "in fun: ".$retV."</br>";
+		$db=null;
+		return $retMess;
+
+
+    }
 
     function new_Mem ($uid, $pid)
     {

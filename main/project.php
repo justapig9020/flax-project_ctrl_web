@@ -43,7 +43,7 @@ if (isset ($_GET["pid"])) {
                               $wintr, 
                               $pid); 
     }
-
+    //if (isset ($_POST["fname"]))
     if (isset ($_POST["tid"])) {
     /*
      * tid
