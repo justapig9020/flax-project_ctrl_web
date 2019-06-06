@@ -1,12 +1,12 @@
 header =' <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">\
-		<a class="navbar-brand" href="#">\
+		<a class="navbar-brand" href="../overView.php">\
 			<span class="h3 mx-1">FLAX</span>\
 			<img src="../image/Pornlogo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">\
 		</a>\
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">\
 			<ul class="navbar-nav mr-auto">\
 				<li class="nav-item">\
-					<a class="nav-link" href="#">專案列表</a>\
+					<a class="nav-link" href="../project.php">專案列表</a>\
 				</li>\
 				<li class="nav-item">\
 					<a class="nav-link" href="#">新增專案</a>\
