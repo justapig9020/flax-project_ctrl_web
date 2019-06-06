@@ -12,7 +12,7 @@
 <body>
 <header>
 </header>
-<script src="header.js"></script>
+<script src="js/header.js"></script>
 <main role="main" class="container">
 
 <div class="card text-center">

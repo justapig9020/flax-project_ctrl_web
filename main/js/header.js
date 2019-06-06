@@ -15,7 +15,7 @@ header =' <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">\
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">帳戶</a>\
 					<div class="dropdown-menu" aria-labelledby="dropdown01">\
 						<a class="dropdown-item" href="#">個人資料</a>\
-						<a class="dropdown-item" href="js/">登出</a>\
+						<a class="dropdown-item" href="../logout.php">登出</a>\
 					</div>\
 				</li>\
 			</ul>\
