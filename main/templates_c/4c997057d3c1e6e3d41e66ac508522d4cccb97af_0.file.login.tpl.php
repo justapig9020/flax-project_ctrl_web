@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-05-22 17:17:09
+/* Smarty version 3.1.34-dev-7, created on 2019-06-06 14:13:30
   from 'D:\DB\flax-project_ctrl_web\main\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ce567f59d5751_97954534',
+  'unifunc' => 'content_5cf9036ab22f77_92862431',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4c997057d3c1e6e3d41e66ac508522d4cccb97af' => 
     array (
       0 => 'D:\\DB\\flax-project_ctrl_web\\main\\templates\\login.tpl',
-      1 => 1558538225,
+      1 => 1559822340,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ce567f59d5751_97954534 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf9036ab22f77_92862431 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "login", 0);
 ?>
 
@@ -29,13 +29,12 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.con
     <title><?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'title');?>
 _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'page');?>
 </title>
-
+   
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-
-
     <!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="css/signin.css"/>	
+   
 
   </head>
   <body class="text-center">
