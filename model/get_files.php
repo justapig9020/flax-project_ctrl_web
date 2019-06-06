@@ -9,7 +9,7 @@ try {
         $ins->bindParam (':pid', $pid);
         $result = $ins->execute ();
         if ($result) {
-            $files = $ins->fetch (PDO::FETCH_ASSOC);
+            $files = $ins->fetchAll (PDO::FETCH_ASSOC);
         }
 } catch (PDOException $e) {}
 $db = null;

@@ -9,7 +9,7 @@ try {
         $ins->bindParam (':pid', $pid);
         $result = $ins->execute ();
         if ($result) {
-            $mems = $ins->fetch (PDO::FETCH_ASSOC);
+            $mems = $ins->fetchAll (PDO::FETCH_ASSOC);
         }
 } catch (PDOException $e) {}
 $db = null;

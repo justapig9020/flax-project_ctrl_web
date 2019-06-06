@@ -1,6 +1,9 @@
 <?php
 require '../libs/Smarty.class.php';
-require '../include/sql.php'
+require '../include/sql.php';
+require '../include/network.php';
+$smarty = new Smarty;
+/*   
  *$smarty->debugging = true;
  *$smarty->caching = true;
  *$smarty->cache_lifetime = 120;
@@ -14,16 +17,24 @@ if (!checkIn()) {
 
 if (isset ($_GET["pid"])) {
     include ("../model/project_selected_model.php");
+    $retMess = "";
     $page = "project_selected";
-    if (isset ($_POST["newWork"])) {
+    if (isset ($_POST["wname"]) and
+        isset ($_POST["wstart"]) and
+        isset ($_POST["wend"])
+        ) {
     /*
+     * wname
      * wstart
      * wend
-     * intr
+     * wintr
      * pid
      *
      */
-        new_work (); 
+        $wintr = null;
+        if (isset ($_POST["wintr"]))
+            $wintr = $_POST["wintr"];
+        $retMesse = new_work ($_POST["wname"], $_POST["wstart"], $_POST["wend"], $wintr, $pid); 
     }
 
     if (isset ($_POST["newTea"])) {
@@ -32,7 +43,7 @@ if (isset ($_GET["pid"])) {
      * pid
      *
      */
-        new_Tea (); // add new teacher
+        $retMesse = new_Tea (); // add new teacher
     }
 
     if (isset ($_POST["newMem"])) {
@@ -41,7 +52,7 @@ if (isset ($_GET["pid"])) {
      * pid
      *
      */
-        new_Mem ();
+        $retMesse = new_Mem ();
     }
     include ("../model/get_Mems.php");
     include ("../model/get_Works.php");
@@ -49,6 +60,7 @@ if (isset ($_GET["pid"])) {
     $smarty->assign ("mems", $mems);
     $smarty->assign ("works", $works);
     $smarty->assign ("files", $files);
+    $smarty->assign ("retMesse", $retMesse);
 } else {
     $page = "project_list";
     include ("../model/project_list_model.php");    
