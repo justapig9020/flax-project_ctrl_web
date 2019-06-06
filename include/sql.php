@@ -2,6 +2,7 @@
 if (!isset ($__SQL__)) {
     $__SQL__ = 1;
     include("dbconf.php");
+    /* connect to database*/
 	function str_con () {
         try {
             $conf = sprintf('mysql:host=localhost;dbname=project_ctrl;charsetutf8;port=%d;',getDBPort());

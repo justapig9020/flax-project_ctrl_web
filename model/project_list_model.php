@@ -3,7 +3,7 @@
 /* arguments 
  * name | interview
  * -----|----------
- * prjs | array (array ("oid"=>$oid,"pname"=>$pname))
+ * prjs | array (array ("oid"=>$oid,"pname"=>$pname, "pid"=>$pid))
  * prj_exist | 1 exist , 0 not exist
  *
  * /
@@ -13,7 +13,7 @@ $prj_exist = 1;
 $db = str_con () ;
 if ($db) {
     //echo"連線成功</br>";
-    $sel = "select do_proj.user_id as oid,project.name as pname from project, (select project_id from do_proj where user_id = :uid) as used,do_proj where project.id = used.project_id and do_proj.project_id = project.id and status = 0;";
+    $sel = "select do_proj.user_id as oid,project.name as pname, project.id as pid from project, (select project_id from do_proj where user_id = :uid) as used,do_proj where project.id = used.project_id and do_proj.project_id = project.id and status = 0;";
     try{
         $ins = $db->prepare ($sel) ;
         if ($ins) {
@@ -28,8 +28,6 @@ if ($db) {
     }catch (PDOException$e) {}
     if (!$prjs) {
         $prj_exist = 0;
-    } else {
-        $prj_exist = 1;
     }
     /*show selectable projects*/
 
