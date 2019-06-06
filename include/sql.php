@@ -55,6 +55,96 @@ if (!isset ($__SQL__)) {
 		return $retV;
     }
 
+    function new_Mem ($uid, $pid)
+    {
+        $db = str_con();
+        //echo "in func</br>";
+        $retMess=NULL;
+		if ($db){
+            //echo "連線成功</br>";
+            $sel = "select * form do_proj where project_id = :pid and user_id = :uid";
+            try {
+				$ins = $db->prepare($sel); 
+                if($ins){
+					$ins->bindParam(':uid',$uid);
+					$ins->bindParam(':pid',$pid);
+                    $result = $ins->execute();
+					if($result){
+							$row = $ins->fetchall(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                }
+            } catch (PDOException $e){}
+            if (!$row) {
+                $sel = "insert into do_proj
+                        (user_id, project_id, status) 
+                        value 
+                        (:tid, :pid , 1)";
+			    try {
+				    $ins = $db->prepare($sel); 
+				    if($ins){
+                        $ins->bindParam(':tid', $tid);
+					    $ins->bindParam(':pid',$pid);
+                        $ins->execute();
+                    }
+                } catch (PDOException $e){}
+                $retMess = "成員新增完成";
+            } else {
+                $retMess = "成員已存在"; 
+            } 
+		}
+        //echo "in fun: ".$retV."</br>";
+		$db=null;
+		return $retMess;
+
+    }
+        
+    function new_Tea ($tid, $pid)
+    {
+        $db = str_con();
+        //echo "in func</br>";
+        $retMess=NULL;
+		if ($db){
+            //echo "連線成功</br>";
+            $sel = "select * form do_proj where project_id = :pid and status = 2";
+            try {
+				$ins = $db->prepare($sel); 
+				if($ins){
+					$ins->bindParam(':pid',$pid);
+                    $result = $ins->execute();
+					if($result){
+							$row = $ins->fetchall(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                }
+            } catch (PDOException $e){}
+            if (!$row) {
+                $sel = "insert into do_proj
+                        (user_id, project_id, status) 
+                        value 
+                        (:tid, :pid , 2)";
+			    try {
+				    $ins = $db->prepare($sel); 
+				    if($ins){
+                        $ins->bindParam(':tid', $tid);
+					    $ins->bindParam(':pid',$pid);
+                        $ins->execute();
+                    }
+                } catch (PDOException $e){}
+                $retMess = "教授新增完成";
+            } else {
+                $retMess = "教授已存在"; 
+            } 
+		}
+        //echo "in fun: ".$retV."</br>";
+		$db=null;
+		return $retMess;
+    }
+    
     function new_work ($wname, $wstart, $wend, $wintr, $pid)
     {
         $db = str_con();
@@ -79,7 +169,7 @@ if (!isset ($__SQL__)) {
                     }
                 }
             } catch (PDOException $e){}
-            if ($row) {
+            if (!$row) {
                 $sel = "insert into work 
                         (name, start, end, project_id, intr)
                         value 

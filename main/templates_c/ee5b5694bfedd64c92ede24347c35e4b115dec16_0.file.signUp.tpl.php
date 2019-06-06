@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-05 15:04:19
+/* Smarty version 3.1.34-dev-7, created on 2019-06-06 16:37:30
   from 'C:\flax-project_ctrl_web\main\templates\signUp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cf7bdd3b57204_77798806',
+  'unifunc' => 'content_5cf9252a8fe095_65475481',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ee5b5694bfedd64c92ede24347c35e4b115dec16' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\signUp.tpl',
-      1 => 1559739821,
+      1 => 1559831815,
       2 => 'file',
     ),
   ),
@@ -20,28 +20,33 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf7bdd3b57204_77798806 (Smarty_Internal_Template $_smarty_tpl) {
-?><html>
+function content_5cf9252a8fe095_65475481 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "signup", 0);
+?>
+
+<html>
 <head>
 	<title><?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'title');?>
 _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'page');?>
 </title>
-
-    <!-- Bootstrap core CSS -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-
-    <!-- Custom styles for this template -->
-	<link rel="stylesheet" type="text/css" href="css/signup.css"/>	
+   
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<!-- Custom styles for this template -->
+		<link rel="stylesheet" type="text/css" href="css/signup.css"/>	
+		<!-- Bootstrap core CSS -->
+   
 </head>
 <body class="text-center">
 <header>
 </header>
 <div class="container">
 	<form class="form-signup" id="login" name="form1" method="post" action="">
+	<?php if ($_smarty_tpl->tpl_vars['signUp_retM']->value != '') {?>
 	<div class="alert alert-danger" role="alert">
 		<font color="red"><?php echo $_smarty_tpl->tpl_vars['signUp_retM']->value;?>
 </font>
 	</div>
+	<?php }?>
 		<div class="form-row">
 			<div class="form-group col-md-12">
 				<label class="sr-only">輸入學號</label>

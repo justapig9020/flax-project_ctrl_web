@@ -8,7 +8,9 @@ $smarty = new Smarty;
  *$smarty->caching = true;
  *$smarty->cache_lifetime = 120;
  */
-$retMesse = "";
+$retMem = "";
+$retTea = "";
+$retWor = "";
 if (!checkIn()) {
     header("location:index.php");
 }
@@ -34,25 +36,29 @@ if (isset ($_GET["pid"])) {
         $wintr = null;
         if (isset ($_POST["wintr"]))
             $wintr = $_POST["wintr"];
-        $retMesse = new_work ($_POST["wname"], $_POST["wstart"], $_POST["wend"], $wintr, $pid); 
+        $retWor = new_work ($_POST["wname"], 
+                              $_POST["wstart"], 
+                              $_POST["wend"], 
+                              $wintr, 
+                              $pid); 
     }
 
-    if (isset ($_POST["newTea"])) {
+    if (isset ($_POST["tid"])) {
     /*
      * tid
      * pid
      *
      */
-        $retMesse = new_Tea (); // add new teacher
+        $retTea = new_Tea ($_POST["tid"], $pid); // add new teacher
     }
 
-    if (isset ($_POST["newMem"])) {
+    if (isset ($_POST["uid"])) {
     /*
      * uid
      * pid
      *
      */
-        $retMesse = new_Mem ();
+        $retMem = new_Mem ($_POST["uid"], $pid);
     }
     include ("../model/get_Mems.php");
     include ("../model/get_Works.php");
