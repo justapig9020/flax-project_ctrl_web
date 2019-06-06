@@ -3,9 +3,7 @@
 <head>
 	<title>{#title#}_{#page#}</title>
    {literal}
-    <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-    <!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="css/normal.css"/>	   
    {/literal}
 </head>
@@ -20,7 +18,7 @@
 			<p class="lead">想要新增專案嗎</p>
 			<hr class="my-4">
 			<p>試試看下面這顆按鈕</p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">新增專案</a>
+			<a class="btn btn-primary btn-lg" href="newProject.php" role="button">新增專案</a>
 		</div>
 	{else}
 	{foreach $prjs as $row}
@@ -29,8 +27,8 @@
 			<div class="card">
 				<div class="card-header">
 					<ul class="list-inline">
-						<li class="list-inline-item">{$row["oid"]}/{$row["pname"]}</li>
-						<li class="list-inline-item"><div class="text-right"><a href="./project.php?pid={$row["pid"]}" class="btn btn-primary">詳細希望</a></div></li>
+						<li class="list-inline-item">{$row["oid"]} / {$row["pname"]}</li>
+						<li class="list-inline-item"><a href="./project.php?pid={$row["pid"]}" class="btn btn-primary">詳細希望</a></li>
 					</ul>
 				</div>
 			</div>
