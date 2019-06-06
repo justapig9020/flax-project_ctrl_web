@@ -28,8 +28,10 @@
 		<div class="col-sm-4">
 			<div class="card">
 				<div class="card-header">
-					{$row["oid"]}/{$row["pname"]}</br>
-					<a href="./project.php?pid={$row["pid"]}" class="btn btn-primary">詳細希望</a>
+					<ul class="list-inline">
+						<li class="list-inline-item">{$row["oid"]}/{$row["pname"]}</li>
+						<li class="list-inline-item"><div class="text-right"><a href="./project.php?pid={$row["pid"]}" class="btn btn-primary">詳細希望</a></div></li>
+					</ul>
 				</div>
 			</div>
 		</div>
