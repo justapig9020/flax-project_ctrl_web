@@ -22,15 +22,10 @@
 		</div>
 	{else}
 	{foreach $prjs as $row}
-		<div class="row">
+	<div class="row">
 		<div class="col-sm-4">
-			<div class="card">
-				<div class="card-header">
-					<ul class="list-inline">
-						<li class="list-inline-item">{$row["oid"]} / {$row["pname"]}</li>
-						<li class="list-inline-item"><a href="./project.php?pid={$row["pid"]}" class="btn btn-primary">詳細希望</a></li>
-					</ul>
-				</div>
+			<div class="list-group">
+				<a href="./project.php?pid={$row["pid"]}" class="list-group-item list-group-item-action">{$row["oid"]} / {$row["pname"]}</a>
 			</div>
 		</div>
 	</div>	

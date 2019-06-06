@@ -12,11 +12,9 @@
 </header>
 <div class="container">
 	<form class="form-signup" id="login" name="form1" method="post" action="">
-	{if $signUp_retM neq ""}
-	<div class="alert alert-danger" role="alert">
-		<font color="red">{$signUp_retM}</font>
-	</div>
-	{/if}
+		{if $signUp_retM neq ""}
+			<p><span class="badge badge-pill badge-warning">{$signUp_retM}</span></p>
+		{/if}		
 		<div class="form-row">
 			<div class="form-group col-md-12">
 				<input class="form-control" type="text" name="id" placeholder="學號" autofocus="" required="">

@@ -13,7 +13,6 @@
 <header>
 </header>
 <div class="container">
-		<font color="red">{$retMesse}</font>
 	<form class="form-newProject" id="newProject" name="form1" method="post" action="">
 		<div class="form-row">
 			<div class="form-group col-md-12">
@@ -23,8 +22,13 @@
 				<input class="form-control" type="text" name="pintr" placeholder="專題簡介">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增帳號"></input>
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增專題"></input>
 			</div>
+		</div>			
+		<div class="form-group col-md-12">
+			{if $retMesse neq ""}
+				<span class="badge badge-pill badge-success">{$retMesse}</span>
+			{/if}
 		</div>
 	</form>
 </div>
