@@ -62,7 +62,7 @@ if (!isset ($__SQL__)) {
         $retMess=NULL;
 		if ($db){
             //echo "連線成功</br>";
-            $sel = "select * form project inner join do_proj on project.id = do_proj.project.id and do_proj.status = 0 where project.name = :pname and do_proj.user_id = :uid";
+            $sel = "select * form project inner join do_proj on project.id = do_proj.project_id and do_proj.status = 0 where project.name = :pname and do_proj.user_id = :uid";
             try {
 				$ins = $db->prepare($sel); 
                 if($ins){
