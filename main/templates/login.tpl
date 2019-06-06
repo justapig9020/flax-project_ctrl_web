@@ -2,13 +2,12 @@
 <html>
 <head>
     <title>{#title#}_{#page#}</title>
-
+   {literal}
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-
-
     <!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="css/signin.css"/>	
+   {/literal}
 
   </head>
   <body class="text-center">
