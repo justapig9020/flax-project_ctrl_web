@@ -27,12 +27,14 @@
 		</div>			
 		<div class="form-group col-md-12">
 			{if $retMesse neq ""}
-				<span class="badge badge-pill badge-success">{$retMesse}</span>
+				<span class="badge badge-pill badge-warning">{$retMesse}</span>
 			{/if}
 		</div>
 	</form>
 </div>
 <footer>
 </footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="../js/bootstrap.bundle.js"></script>
 </body>
 </html>
