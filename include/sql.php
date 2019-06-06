@@ -62,7 +62,7 @@ if (!isset ($__SQL__)) {
         $retMess=NULL;
 		if ($db){
             //echo "連線成功</br>";
-            $sel = "select * form project inner join do_proj on project.id = do_proj.project_id and do_proj.status = 0 where project.name = :pname and do_proj.user_id = :uid";
+            $sel = "select * from project inner join do_proj on project.id = do_proj.project_id and do_proj.status = 0 where project.name = :pname and do_proj.user_id = :uid";
             try {
 				$ins = $db->prepare($sel); 
                 if($ins){
@@ -90,13 +90,27 @@ if (!isset ($__SQL__)) {
                         $ins->execute();
                     }
                 } catch (PDOException $e){}
+                $sel = "select last_insert_id()";
+                try {
+				    $ins = $db->prepare($sel); 
+                    if($ins){
+                        $result = $ins->execute();
+		    			if($result){
+			    				$getPid = $ins->fetch(PDO::FETCH_NUM);
+			    		}else{
+			    			$error = $ins->errorInfo();
+			    			//echo "查詢失敗".$error[2];
+                        }
+                    }
+                } catch (PDOException $e){}
+                $pid = $getPid[0];
                 $sel = "insert into do_proj
                         (user_id, project_id, status) 
                         value 
                         (:uid, :pid , 0)";
 			    try {
-				    $ins = $db->prepare($sel); 
-				    if($ins){
+                    $ins = $db->prepare($sel); 
+                    if($ins){
                         $ins->bindParam(':uid', $uid);
 					    $ins->bindParam(':pid',$pid);
                         $ins->execute();
