@@ -11,9 +11,10 @@
 /*projectunselect*/
 $prj_exist = 1;
 $db = str_con () ;
+$uid = $_SESSION["user"];
 if ($db) {
     //echo"連線成功</br>";
-    $sel = "select do_proj.user_id as oid,project.name as pname, project.id as pid from project, (select project_id from do_proj where user_id = :uid) as used,do_proj where project.id = used.project_id and do_proj.project_id = project.id and status = 0;";
+    $sel = "select do1.user_id as search_id, do2.user_id as oid, project.name as pname from (do_proj as do1 inner join do_proj as do2 on do1.project_id = do2.project_id) inner join project on project.id = do1.project_id where do1.user_id = :uid and do2.status = 0;";
     try{
         $ins = $db->prepare ($sel) ;
         if ($ins) {

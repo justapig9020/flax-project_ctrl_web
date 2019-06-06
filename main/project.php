@@ -11,6 +11,7 @@ $smarty = new Smarty;
 $retMem = "";
 $retTea = "";
 $retWor = "";
+$retMesse = "";
 if (!checkIn()) {
     header("location:index.php");
 }
@@ -52,13 +53,13 @@ if (isset ($_GET["pid"])) {
         $retTea = new_Tea ($_POST["tid"], $pid); // add new teacher
     }
 
-    if (isset ($_POST["uid"])) {
+    if (isset ($_POST["mid"])) {
     /*
      * uid
      * pid
      *
      */
-        $retMem = new_Mem ($_POST["uid"], $pid);
+        $retMem = new_Mem ($_POST["mid"], $pid);
     }
     include ("../model/get_Mems.php");
     include ("../model/get_Works.php");
@@ -66,14 +67,13 @@ if (isset ($_GET["pid"])) {
     $smarty->assign ("mems", $mems);
     $smarty->assign ("works", $works);
     $smarty->assign ("files", $files);
-    $smarty->assign ("retMesse", $retMesse);
 } else {
     $page = "project_list";
     include ("../model/project_list_model.php");    
     $smarty->assign ("prjs", $prjs);
     $smarty->assign ("prj_exist", $prj_exist);
 }
-$smarty->assign ("project_retM", $retMesse);
+$smarty->assign ("retMesse", $retMesse);
 $go = sprintf ("%s.tpl", $page);
 $smarty->display ($go);
 ?>
