@@ -14,7 +14,8 @@ if (!isset ($__SQL__)) {
             exit();
 		} 	
 		return $db;
-	}
+    }
+
 	function get_pid ($pname,$oid)
 	{
 		$db = str_con();
@@ -52,6 +53,56 @@ if (!isset ($__SQL__)) {
 		}
         //echo "in fun: ".$retV."</br>";
 		return $retV;
+    }
+
+    function new_work ($wname, $wstart, $wend, $wintr, $pid)
+    {
+        $db = str_con();
+        //echo "in func</br>";
+        $retMess=NULL;
+		if ($db){
+            //echo "連線成功</br>";
+            $sel = "select * form work where name = :wname and start = :wstart and end = :wend and project_id = :pid";
+            try {
+				$ins = $db->prepare($sel); 
+				if($ins){
+                    $ins->bindParam(':wname', $wname);
+                    $ins->bindParam(':wstart', $wstart);
+                    $ins->bindParam(':wend', $wend);
+					$ins->bindParam(':pid',$pid);
+                    $result = $ins->execute();
+					if($result){
+							$row = $ins->fetchall(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                }
+            } catch (PDOException $e){}
+            if ($row) {
+                $sel = "insert into work 
+                        (name, start, end, project_id, intr)
+                        value 
+                        (:wname, :wstart, :wend, :pid, :wintr)";
+			    try {
+				    $ins = $db->prepare($sel); 
+				    if($ins){
+                        $ins->bindParam(':wname', $wname);
+                        $ins->bindParam(':wstart', $wstart);
+                        $ins->bindParam(':wend', $wend);
+                        $ins->bindParam(':wintr', $wintr);
+					    $ins->bindParam(':pid',$pid);
+                        $ins->execute();
+                    }
+                } catch (PDOException $e){}
+                $retMess = "工作新增完成";
+            } else {
+                $retMess = "工作已存在"; 
+            } 
+		}
+        //echo "in fun: ".$retV."</br>";
+		$db=null;
+		return $retMess;
     }
 
     function get_premission ($pname,$oid,$uid)

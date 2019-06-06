@@ -7,14 +7,14 @@ if (isset ($_POST["wmon"])) { // select sork month
 $works = null;
 $db = str_con ();
 $uid = $_SESSION["user"];
-$sel = "select name as wname, start as wstart, end as wend, intr as wintr from work where project_id=:pid and :wmon<=month(end) adn :wmon>=month(start)";
+$sel = "select name as wname, date_format(start,'%Y') as wstarty, date_format(start,'%m') as wstartm, date_format(start,'%d') as wstartd, date_format(end,'%Y') as wendy,  date_format(end,'%m') as wendm, date_format(end,'%d') as wendd, intr as wintr from work where project_id=:pid and :wmon<=month(end) adn :wmon>=month(start)";
 try {
     $ins = $db->prepare ($sel);
     if ($ins) {
         $ins->bindParam (':pid', $pid);
         $result = $ins->execute ();
         if ($result) {
-            $works = $ins->fetch (PDO::FETCH_ASSOC);
+            $works = $ins->fetchAll (PDO::FETCH_ASSOC);
         }
 } catch (PDOException $e) {}
 $db = null;
