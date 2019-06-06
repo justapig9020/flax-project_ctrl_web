@@ -2,7 +2,7 @@
 $mems = null;
 $db = str_con ();
 $uid = $_SESSION["user"];
-$sel = "select own_id as wid, name as fname, time as ftime, intr as fintr from do_proj where project_id=:pid";
+$sel = "select own_id as wid, name as fname, time as ftime, intr as fintr, premission as fpre from file where project_id=:pid";
 try {
     $ins = $db->prepare ($sel);
     if ($ins) {
@@ -11,6 +11,7 @@ try {
         if ($result) {
             $files = $ins->fetchAll (PDO::FETCH_ASSOC);
         }
+    }
 } catch (PDOException $e) {}
 $db = null;
 ?>
