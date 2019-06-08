@@ -60,6 +60,7 @@ if (isset ($_GET["pid"])) {
      *
      */
         $retMem = new_Mem ($_POST["mid"], $pid);
+        echo $retMem;
     }
     include ("../model/get_Mems.php");
     include ("../model/get_Works.php");
@@ -67,6 +68,9 @@ if (isset ($_GET["pid"])) {
     $smarty->assign ("mems", $mems);
     $smarty->assign ("works", $works);
     $smarty->assign ("files", $files);
+    $smarty->assign ("retMem", $retMem);
+    $smarty->assign ("retTea", $retTea);
+    $smarty->assign ("retWor", $retWor);
 } else {
     $page = "project_list";
     include ("../model/project_list_model.php");    

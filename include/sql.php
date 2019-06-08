@@ -156,13 +156,15 @@ if (!isset ($__SQL__)) {
                 $sel = "insert into do_proj
                         (user_id, project_id, status) 
                         value 
-                        (:tid, :pid , 0)";
+                        (:uid, :pid , 0)";
 			    try {
 				    $ins = $db->prepare($sel); 
 				    if($ins){
-                        $ins->bindParam(':tid', $tid);
+                        $ins->bindParam(':uid', $uid);
 					    $ins->bindParam(':pid',$pid);
                         $ins->execute();
+                    }else{
+                        echo "insert error";
                     }
                 } catch (PDOException $e){}
                 $retMess = "成員新增完成";
