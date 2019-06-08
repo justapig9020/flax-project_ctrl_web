@@ -20,8 +20,10 @@ if (!checkIn()) {
 
 if (isset ($_GET["pid"])) {
     include ("../model/project_selected_model.php");
+    include ("../model/get.php");
     $retMess = "";
     $page = "project_selected";
+    $pid = $_GET["pid"];
     if (isset ($_POST["wname"]) and
         isset ($_POST["wstart"]) and
         isset ($_POST["wend"])
@@ -62,9 +64,16 @@ if (isset ($_GET["pid"])) {
         $retMem = new_Mem ($_POST["mid"], $pid);
         echo $retMem;
     }
-    include ("../model/get_Mems.php");
-    include ("../model/get_Works.php");
-    include ("../model/get_files.php");
+    $mems = get_Mems ($pid);
+    if (isset ($_POST["wmon"])) { // select sork month
+        $wmon = $_POST["wmon"];
+    } else {
+        $wmon = (int) date('m', strtotime('-0 month'));
+    }
+    $works = get_Works ($pid, $wmon);
+    $files = get_Files ($pid);
+    $pname = get_Pname ($pid);
+    $smarty->assign ("pname", $pname);
     $smarty->assign ("mems", $mems);
     $smarty->assign ("works", $works);
     $smarty->assign ("files", $files);
