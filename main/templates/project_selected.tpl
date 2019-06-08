@@ -24,28 +24,24 @@
 <div class="row">
     <div class="col-2">
         <ul class="list-group list-group-flush">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
+        <div class="list-group">
             {foreach $mems as $row}
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="list-group">
-                            <li class="list-group-item">{$row["uid"]}</li>
-                            <li class="list-group-item">123</li>
-                        </div>
-                    </div>
-                </div>	
+                <li class="list-group-item">{$row["uid"]}</li>
+                <li class="list-group-item">123</li>
             {/foreach}
+        </div>
     </div>
     <div class="col-8">
         第一行文字<br>第二行文字<br>第三行文字
     </div>
     <div class="col-2">
         <ul class="list-group list-group-flush">
-            <b><li class="list-group-item list-group-item-warning">擁有者</li></b>
+            <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
             <li class="list-group-item">123456</li>
         </ul>
         <ul class="list-group list-group-flush">
-            <b><li class="list-group-item list-group-item-info">Teacher</li></b>
+            <b><li class="list-group-item list-group-item-info text-center">Teacher</li></b>
             <li class="list-group-item">654321</li>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增老師</button>
         </ul>    
