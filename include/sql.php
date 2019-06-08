@@ -137,7 +137,7 @@ if (!isset ($__SQL__)) {
         $retMess=NULL;
 		if ($db){
             //echo "連線成功</br>";
-            $sel = "select * form do_proj where project_id = :pid and user_id = :uid";
+            $sel = "select * from do_proj where project_id = :pid and user_id = :uid";
             try {
 				$ins = $db->prepare($sel); 
                 if($ins){
@@ -183,7 +183,7 @@ if (!isset ($__SQL__)) {
         $retMess=NULL;
 		if ($db){
             //echo "連線成功</br>";
-            $sel = "select * form do_proj where project_id = :pid and status = 2";
+            $sel = "select * from do_proj where project_id = :pid and status = 2";
             try {
 				$ins = $db->prepare($sel); 
 				if($ins){
@@ -227,7 +227,7 @@ if (!isset ($__SQL__)) {
         $retMess=NULL;
 		if ($db){
             //echo "連線成功</br>";
-            $sel = "select * form work where name = :wname and start = :wstart and end = :wend and project_id = :pid";
+            $sel = "select * from work where name = :wname and start = :wstart and end = :wend and project_id = :pid";
             try {
 				$ins = $db->prepare($sel); 
 				if($ins){
