@@ -1,12 +1,12 @@
 {config_load file="normal.conf" section="newProject"}
 <html>
 <head>
-	<title>{#title#}_{#page#}</title>
-   {literal}
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <title>{#title#}_{#page#}</title>
+    {literal}
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/normal.css"/>
 		<link rel="stylesheet" type="text/css" href="css/newProject.css"/>
-   {/literal}
+    {/literal}
 </head>
 <body class="text-center">
 <script src="js/header.js"></script>

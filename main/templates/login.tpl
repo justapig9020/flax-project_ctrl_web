@@ -10,7 +10,7 @@
   <body class="text-center">
     <form class="form-signin" id="login" name="login" method="post" action="">
 		<img class="mb-4" src="image/logo.png" alt="" width="72" height="72">
-		<h1 class="h3 mb-3 font-weight-normal">聽說是FLAX</h1>
+        <h1 class="h3 mb-3 font-weight-normal">聽說是FLAX</h1>
 		{if $login_retM neq ""}
 			<p><span class="badge badge-pill badge-warning">{$login_retM}</span></p>
 		{/if}		
