@@ -107,7 +107,7 @@ if (!isset ($__SQL__)) {
                 $sel = "insert into do_proj
                         (user_id, project_id, status) 
                         value 
-                        (:uid, :pid , 0)";
+                        (:uid, :pid , 1)";
 			    try {
                     $ins = $db->prepare($sel); 
                     if($ins){
@@ -118,6 +118,7 @@ if (!isset ($__SQL__)) {
                 } catch (PDOException $e){}
 
                 $retMess = "專案新增完成";
+                header ("location:./project.php");
             } else {
                 $retMess = "專案已存在"; 
             } 
@@ -155,7 +156,7 @@ if (!isset ($__SQL__)) {
                 $sel = "insert into do_proj
                         (user_id, project_id, status) 
                         value 
-                        (:tid, :pid , 1)";
+                        (:tid, :pid , 0)";
 			    try {
 				    $ins = $db->prepare($sel); 
 				    if($ins){

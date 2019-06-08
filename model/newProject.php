@@ -65,7 +65,8 @@ if(isset($_POST['intr'])
 			}
 			$ndir = sprintf("mkdir \"users/%s/%s\\\"",$id,$name);
 			shell_exec($ndir);
-			$ret = "完成";
+            $ret = "完成";
+            header ("location:./project.php");
 		}else{
 			$ret = "專案已存在";
 		}

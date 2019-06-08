@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-06 23:22:15
+/* Smarty version 3.1.34-dev-7, created on 2019-06-07 00:24:33
   from 'C:\flax-project_ctrl_web\main\templates\project_list.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cf98407a65307_44611075',
+  'unifunc' => 'content_5cf992a1dd5b50_96486153',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cdfebae95fb54140c3aa0e4afd2f11aba155e420' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\project_list.tpl',
-      1 => 1559856116,
+      1 => 1559859861,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf98407a65307_44611075 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf992a1dd5b50_96486153 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "project_list", 0);
 ?>
 
@@ -55,18 +55,13 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
 ?>
-		<div class="row">
+	<div class="row">
 		<div class="col-sm-4">
-			<div class="card">
-				<div class="card-header">
-					<ul class="list-inline">
-						<li class="list-inline-item"><?php echo $_smarty_tpl->tpl_vars['row']->value["oid"];?>
+			<div class="list-group">
+				<a href="./project.php?pid=<?php echo $_smarty_tpl->tpl_vars['row']->value["pid"];?>
+" class="list-group-item list-group-item-action"><?php echo $_smarty_tpl->tpl_vars['row']->value["oid"];?>
  / <?php echo $_smarty_tpl->tpl_vars['row']->value["pname"];?>
-</li>
-						<li class="list-inline-item"><a href="./project.php?pid=<?php echo $_smarty_tpl->tpl_vars['row']->value["pid"];?>
-" class="btn btn-primary">詳細希望</a></li>
-					</ul>
-				</div>
+</a>
 			</div>
 		</div>
 	</div>	
