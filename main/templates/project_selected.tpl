@@ -16,7 +16,7 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-sm">
-                <p class="h1">{$prjs}</p>
+                <p class="h1">{foreach $mems as $row}{if $row["status"] eq 1}{$row["uid"]}{/if}{/foreach}/{$pname}</p>
             </div>
         </div>
     </div>
@@ -25,26 +25,34 @@
     <div class="col-2">
         <ul class="list-group list-group-flush">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
-        <div class="list-group">
             {foreach $mems as $row}
-                <li class="list-group-item">{$row["uid"]}</li>
-                <li class="list-group-item">123</li>
+                {if $row["status"] eq "0"}
+                    <li class="list-group-item">{$row["uid"]}</li>
+                {/if}
             {/foreach}
-        </div>
+        </ul>
     </div>
     <div class="col-8">
         第一行文字<br>第二行文字<br>第三行文字
     </div>
     <div class="col-2">
         <ul class="list-group list-group-flush">
-            <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
-            <li class="list-group-item">123456</li>
+        <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
+            {foreach $mems as $row}
+                {if $row["status"] eq "1"}
+                    <li class="list-group-item">{$row["uid"]}</li>
+                {/if}
+            {/foreach}
         </ul>
         <ul class="list-group list-group-flush">
-            <b><li class="list-group-item list-group-item-info text-center">Teacher</li></b>
-            <li class="list-group-item">654321</li>
+            <b><li class="list-group-item list-group-item-info text-center">Professor</li></b>
+            {foreach $mems as $row}
+                {if $row["status"] eq "2"}
+                    <li class="list-group-item">{$row["uid"]}</li>
+                {/if}
+            {/foreach}
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增老師</button>
-        </ul>    
+        </ul>
     </div>
 </div>
 <!-- Modal -->
