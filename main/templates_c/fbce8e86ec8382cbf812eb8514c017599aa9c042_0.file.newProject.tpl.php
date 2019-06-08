@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-06 23:22:16
+/* Smarty version 3.1.34-dev-7, created on 2019-06-07 00:24:40
   from 'C:\flax-project_ctrl_web\main\templates\newProject.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cf984087387f1_03620781',
+  'unifunc' => 'content_5cf992a8a0f491_45271952',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fbce8e86ec8382cbf812eb8514c017599aa9c042' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\newProject.tpl',
-      1 => 1559856116,
+      1 => 1559859861,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf984087387f1_03620781 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf992a8a0f491_45271952 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "newProject", 0);
 ?>
 
@@ -42,8 +42,6 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 <header>
 </header>
 <div class="container">
-		<font color="red"><?php echo $_smarty_tpl->tpl_vars['retMesse']->value;?>
-</font>
 	<form class="form-newProject" id="newProject" name="form1" method="post" action="">
 		<div class="form-row">
 			<div class="form-group col-md-12">
@@ -53,13 +51,25 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 				<input class="form-control" type="text" name="pintr" placeholder="專題簡介">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增帳號"></input>
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增專題"></input>
 			</div>
+		</div>			
+		<div class="form-group col-md-12">
+			<?php if ($_smarty_tpl->tpl_vars['retMesse']->value != '') {?>
+				<span class="badge badge-pill badge-warning"><?php echo $_smarty_tpl->tpl_vars['retMesse']->value;?>
+</span>
+			<?php }?>
 		</div>
 	</form>
 </div>
 <footer>
 </footer>
+<?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../js/bootstrap.bundle.js"><?php echo '</script'; ?>
+>
 </body>
 </html>
 <?php }
