@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-07 16:46:01
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 00:06:07
   from 'C:\flax-project_ctrl_web\main\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfa78a99f41f9_96031729',
+  'unifunc' => 'content_5cfc314f897839_94114765',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4804ab720de22e0cf633dde2d61477e1d1dac856' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\login.tpl',
-      1 => 1559859861,
+      1 => 1560027919,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfa78a99f41f9_96031729 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfc314f897839_94114765 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "login", 0);
 ?>
 
@@ -37,7 +37,7 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
   <body class="text-center">
     <form class="form-signin" id="login" name="login" method="post" action="">
 		<img class="mb-4" src="image/logo.png" alt="" width="72" height="72">
-		<h1 class="h3 mb-3 font-weight-normal">聽說是FLAX</h1>
+        <h1 class="h3 mb-3 font-weight-normal">聽說是FLAX</h1>
 		<?php if ($_smarty_tpl->tpl_vars['login_retM']->value != '') {?>
 			<p><span class="badge badge-pill badge-warning"><?php echo $_smarty_tpl->tpl_vars['login_retM']->value;?>
 </span></p>

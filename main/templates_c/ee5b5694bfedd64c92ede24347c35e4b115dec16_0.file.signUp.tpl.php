@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-06 16:37:30
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 00:06:08
   from 'C:\flax-project_ctrl_web\main\templates\signUp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cf9252a8fe095_65475481',
+  'unifunc' => 'content_5cfc3150cb0042_12606685',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ee5b5694bfedd64c92ede24347c35e4b115dec16' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\signUp.tpl',
-      1 => 1559831815,
+      1 => 1559859861,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf9252a8fe095_65475481 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfc3150cb0042_12606685 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "signup", 0);
 ?>
 
@@ -30,10 +30,8 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.con
 _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'page');?>
 </title>
    
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-		<!-- Custom styles for this template -->
-		<link rel="stylesheet" type="text/css" href="css/signup.css"/>	
-		<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/signup.css"/>	
    
 </head>
 <body class="text-center">
@@ -41,35 +39,27 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 </header>
 <div class="container">
 	<form class="form-signup" id="login" name="form1" method="post" action="">
-	<?php if ($_smarty_tpl->tpl_vars['signUp_retM']->value != '') {?>
-	<div class="alert alert-danger" role="alert">
-		<font color="red"><?php echo $_smarty_tpl->tpl_vars['signUp_retM']->value;?>
-</font>
-	</div>
-	<?php }?>
+		<?php if ($_smarty_tpl->tpl_vars['signUp_retM']->value != '') {?>
+			<p><span class="badge badge-pill badge-warning"><?php echo $_smarty_tpl->tpl_vars['signUp_retM']->value;?>
+</span></p>
+		<?php }?>		
 		<div class="form-row">
 			<div class="form-group col-md-12">
-				<label class="sr-only">輸入學號</label>
 				<input class="form-control" type="text" name="id" placeholder="學號" autofocus="" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<label class="sr-only">輸入姓名</label>
 				<input class="form-control" type="text" name="name" placeholder="姓名" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<label class="sr-only">輸入帳號</label>
 				<input class="form-control" type="text" name="acc" placeholder="帳號" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<label class="sr-only">輸入密碼</label>
 				<input class="form-control" type="password" name="pw" placeholder="密碼" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<label class="sr-only">再輸入一次密碼</label>
 				<input class="form-control" type="password" name="repw" placeholder="再輸入一次密碼" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<label class="sr-only">輸入電子郵件</label>
 				<input class="form-control" type="email" name="email" placeholder="電子郵件" required="">
 			</div>
 			<div class="form-group col-md-12">

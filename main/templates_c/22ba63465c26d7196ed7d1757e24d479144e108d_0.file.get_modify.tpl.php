@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-08 19:42:46
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 11:42:52
   from 'C:\flax-project_ctrl_web\main\templates\get_modify.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfbf396328b46_42547479',
+  'unifunc' => 'content_5cfcd49c132d81_83413147',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '22ba63465c26d7196ed7d1757e24d479144e108d' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\get_modify.tpl',
-      1 => 1560015761,
+      1 => 1560072560,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfbf396328b46_42547479 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfcd49c132d81_83413147 (Smarty_Internal_Template $_smarty_tpl) {
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['modifies']->value, 'row', false, 'key');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['row']->value) {
