@@ -2,6 +2,7 @@
 require '../libs/Smarty.class.php';
 require '../include/sql.php';
 require '../include/network.php';
+require '../model/get.php'
 if (!checkIn())
     header("location:index.php");
 $page = "overView";

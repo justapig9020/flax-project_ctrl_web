@@ -5,10 +5,9 @@ $smarty = new Smarty;
 $retMesse = "";
 include("../include/network.php");
 include("../include/sql.php");
-//if (!checkIn()) {
-//    header ("location:./index.php");
-//}
-// select modify.* from modify inner join file on modify.file_id = file.id where file.project_id in (select project_id from do_proj where user_id = 40543213 group by project_id) and file.project_id = 13 and modify.id > 10 order by modify.id limit 5;
+if (!checkIn()) {
+    header ("location:./index.php");
+}
 if (isset ($_POST["lid"])) { // select sork month
     $lid = $_POST["lid"];
     $db = str_con ();
@@ -42,12 +41,7 @@ if (isset ($_POST["lid"])) { // select sork month
     } catch (PDOException $e) {}
     $db = null;
 }
-echo "-----------------</br>";
-for ($i=0+$_POST["ibuf"] ;$i<50+$_POST["ibuf"] ;$i++)
-	echo $i."</br>";
-echo "-----------------</br>";
 $smarty->assign("modifies",$modifies);
 $go = sprintf("%s.tpl",$page);
 $smarty->display($go);
-
 ?>

@@ -62,7 +62,6 @@ if (isset ($_GET["pid"])) {
      *
      */
         $retMem = new_Mem ($_POST["mid"], $pid);
-        echo $retMem;
     }
     $mems = get_Mems ($pid);
     if (isset ($_POST["wmon"])) { // select sork month
