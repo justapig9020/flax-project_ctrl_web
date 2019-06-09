@@ -1,20 +1,20 @@
-<?php /* Smarty version 3.1.34-dev-7, created on 2019-06-09 15:50:31
+<?php /* Smarty version 3.1.34-dev-7, created on 2019-06-09 20:28:49
          compiled from 'D:\DB\flax-project_ctrl_web\main\configs\normal.conf' */ ?>
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-09 15:50:31
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 20:28:49
   from 'D:\DB\flax-project_ctrl_web\main\configs\normal.conf' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfd0ea71954c2_52569900',
+  'unifunc' => 'content_5cfd4fe19c85a3_99579096',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '72db25b4f5dd904845a936765e11eae851245ba7' => 
     array (
       0 => 'D:\\DB\\flax-project_ctrl_web\\main\\configs\\normal.conf',
-      1 => 1560088094,
+      1 => 1560104655,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfd0ea71954c2_52569900 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd4fe19c85a3_99579096 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigVars($_smarty_tpl, array (
   'sections' => 
   array (
@@ -66,6 +66,13 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigVars($_smarty_tpl, array (
       'vars' => 
       array (
         'page' => 'project',
+      ),
+    ),
+    'config' => 
+    array (
+      'vars' => 
+      array (
+        'page' => 'config',
       ),
     ),
   ),

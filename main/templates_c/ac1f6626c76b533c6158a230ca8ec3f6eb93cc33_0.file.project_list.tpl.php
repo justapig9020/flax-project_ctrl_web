@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-09 15:17:13
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 21:34:35
   from 'D:\DB\flax-project_ctrl_web\main\templates\project_list.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfd06d9bbd840_26707762',
+  'unifunc' => 'content_5cfd5f4b0b48d0_15471034',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ac1f6626c76b533c6158a230ca8ec3f6eb93cc33' => 
     array (
       0 => 'D:\\DB\\flax-project_ctrl_web\\main\\templates\\project_list.tpl',
-      1 => 1560086231,
+      1 => 1560108873,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfd06d9bbd840_26707762 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd5f4b0b48d0_15471034 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "project_list", 0);
 ?>
 
@@ -42,13 +42,13 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 >
 <main role="main" class="container">
 	<?php if ($_smarty_tpl->tpl_vars['prj_exist']->value == "0") {?>
-		<div class="jumbotron">
-			<h1 class="display-4">哈哈是不是沒有專案齁</h1>
-			<p class="lead">想要新增專案嗎</p>
-			<hr class="my-4">
-			<p>試試看下面這顆按鈕</p>
-			<a class="btn btn-primary btn-lg" href="newProject.php" role="button">新增專案</a>
-		</div>
+		<div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">想要新增專案嗎</h5>
+                <p class="card-text">試試看下面這顆按鈕</p>
+                <a href="newproject.php" class="btn btn-primary">新增專案</a>
+            </div>
+        </div>
 	<?php } else { ?>
 	<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['prjs']->value, 'row');
@@ -62,7 +62,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
 " class="list-group-item list-group-item-action"><?php echo $_smarty_tpl->tpl_vars['row']->value["oid"];?>
  / <?php echo $_smarty_tpl->tpl_vars['row']->value["pname"];?>
 </a>
-			</div>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-danger text-center" >刪除</a>
+                </br>
+            </div>
 		</div>
 	</div>	
 	<?php

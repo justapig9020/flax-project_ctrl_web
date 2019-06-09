@@ -44,16 +44,14 @@ $(document).ready (function () {
 <div class="row"> 
     
     <div class="col-2">
-        <ul class="list-group list-group-flush">
-        <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
+        <ul class="list-group">
+        <li class="list-group-item list-group-item-warning text-center"><b>擁有者</b></li>
             {foreach $mems as $row}
                 {if $row["status"] eq "1"}
                     <li class="list-group-item">{$row["uid"]}</li>
                 {/if}
             {/foreach}
-        </ul>
-        <ul class="list-group list-group-flush">
-            <b><li class="list-group-item list-group-item-info text-center">Professor</li></b>
+            <li class="list-group-item list-group-item-info text-center"><b>Professor</b></li>
             {$pro_ex = 0}
             {foreach $mems as $row}
                 {if $row["status"] eq "2"}
@@ -68,23 +66,22 @@ $(document).ready (function () {
     </div>
        
     <div class="col-8">
-
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">wid</th>
-                    <th scope="col">fname</th>
-                    <th scope="col">ftime</th>
-                    <th scope="col">fintr</th>
+                    <th scope="col">wname</th>
+                    <th scope="col">wstart</th>
+                    <th scope="col">wend</th>
+                    <th scope="col">wintr</th>
                 </tr>
             </thead>
             <tbody>
-            {foreach $files as $row}
+            {foreach $works as $row}
                 <tr>
-                    <th scope="row">{$row["wid"]}</th>
-                        <td>{$row["fname"]}</td>
-                        <td>{$row["ftime"]}</td>
-                        <td id="fintr">{$row["fintr"]}</td>
+                    <th scope="row">{$row["wname"]}</th>
+                        <td>{$row["wstarty"]}/{$row["wstartm"]}/{$row["wstartd"]}/</td>
+                        <td>{$row["wendy"]}/{$row["wendm"]}/{$row["wendd"]}</td>
+                        <td id="fintr">{$row["intr"]}</td>
                 </tr>
             {/foreach}
             </tbody>
@@ -93,12 +90,37 @@ $(document).ready (function () {
 
     <div class="col-2">
         <div class="btn-group-vertical">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">新增檔案</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_work">新增工作</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
-        <button type="button" class="btn btn-primary" id="memListButton">O成員名單</button>
+            <div class="btn-group dropright" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    檔案
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">新增檔案</button>
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除檔案</button>
+                </div>
+            </div>
+            <div class="btn-group dropright" role="group">
+                <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    工作
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_work">新增工作</button>
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除工作</button>
+                </div>
+            </div>
+            <div class="btn-group dropright" role="group">
+                <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    成員
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除成員</button>
+                </div>
+            </div>
         </div>
-        <ul class="list-group list-group-flush" id="memList">
+        </br>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-dark text-center"><b>成員名單</b></li>
             {foreach $mems as $row}
                 {if $row["status"] eq "1"}
                     <li class="list-group-item list-group-item-warning">{$row["uid"]}</li>
@@ -130,7 +152,7 @@ $(document).ready (function () {
                    <input class="form-control" type="text" name="wname" placeholder="請輸入工作名稱" autofocus="" required="">
                    <input class="form-control" type="date" name="wstart" placeholder="請輸入開始工作日期" required="">
                    <input class="form-control" type="date" name="wend" placeholder="請輸入結束工作日期" required="">
-                   <input class="form-control" type="text" name="wintr" placeholder="請輸入工作簡介" required="">
+                   <input class="form-control" type="text" name="wintr" placeholder="請輸入工作簡介">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>

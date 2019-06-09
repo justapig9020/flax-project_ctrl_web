@@ -28,19 +28,19 @@
                 </div>
             </div>
             <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Professor
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
                     <a class="dropdown-item" href="#">Dropdown link</a>
                     <a class="dropdown-item" href="#">Dropdown link</a>
                 </div>
             </div>
             <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnGroupDrop3" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Member
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
                     <a class="dropdown-item" href="#">Dropdown link</a>
                     <a class="dropdown-item" href="#">Dropdown link</a>
                 </div>

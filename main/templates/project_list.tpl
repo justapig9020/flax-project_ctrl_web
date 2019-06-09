@@ -13,19 +13,22 @@
 <script src="js/header.js"></script>
 <main role="main" class="container">
 	{if $prj_exist eq "0"}
-		<div class="jumbotron">
-			<h3 class="display-4">哈哈是不是沒有專案齁</h3><!--字條小-->
-			<p class="lead">想要新增專案嗎</p>
-			<p>試試看下面這顆按鈕</p><!--線刪掉-->
-			<a class="btn btn-primary btn-lg" href="newProject.php" role="button">新增專案</a>
-		</div>
+		<div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">想要新增專案嗎</h5>
+                <p class="card-text">試試看下面這顆按鈕</p>
+                <a href="newproject.php" class="btn btn-primary">新增專案</a>
+            </div>
+        </div>
 	{else}
 	{foreach $prjs as $row}
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="list-group">
 				<a href="./project.php?pid={$row["pid"]}" class="list-group-item list-group-item-action">{$row["oid"]} / {$row["pname"]}</a>
-			</div>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-danger text-center" >刪除</a>
+                </br>
+            </div>
 		</div>
 	</div>	
 	{/foreach}
