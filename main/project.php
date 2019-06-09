@@ -81,7 +81,7 @@ if (isset ($_GET["pid"])) {
     $smarty->assign ("retWor", $retWor);
 } else {
     $page = "project_list";
-    $prjs = get_Projs ($_SESSION["user"]);
+    $prjs = get_Projs ();
     if ($prjs) {
         $prj_exist = 1;
     } else {

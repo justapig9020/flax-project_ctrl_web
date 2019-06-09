@@ -21,7 +21,7 @@ if (!isset ($get_php)) {
         return $works;
     }
 
-    function get_Projs ($uid) {
+    function get_Projs () {
 /* arguments 
  * name | interview
  * -----|----------
@@ -59,6 +59,7 @@ if (!isset ($get_php)) {
         }
         return $prjs;
     }
+
     function get_Files ($pid) {
         $mems = null;
         $db = str_con ();
@@ -96,24 +97,7 @@ if (!isset ($get_php)) {
         $db = null;
         return $mems;
     }
-    function get_Files ($pid) {
-        $mems = null;
-        $db = str_con ();
-        $uid = $_SESSION["user"];
-        $sel = "select own_id as wid, name as fname, time as ftime, intr as fintr, premission as fpre from file where project_id=:pid";
-        try {
-            $ins = $db->prepare ($sel);
-            if ($ins) {
-                $ins->bindParam (':pid', $pid);
-                $result = $ins->execute ();
-                if ($result) {
-                    $files = $ins->fetchAll (PDO::FETCH_ASSOC);
-                }
-            }
-        } catch (PDOException $e) {}
-        $db = null;
-        return $files;
-    }
+
     function get_Pname ($pid) {
         $mems = null;
         $db = str_con ();
