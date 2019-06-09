@@ -12,6 +12,25 @@
 <header>
 </header>
 <script src="js/header.js"></script>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+$(document).ready (function () {
+    var ml = $("#memList").text ();
+    var ms = 0;
+    $("#memList").empty ();
+    $("#memListButton").click (function () {
+        if (ms == 0) {
+            ms = 1;
+            $("#memListButton").html ("。新增成員")
+            $("#memList").html(ml);
+        } else {
+            ms = 0;
+            $("#memListButton").html ("O新增成員")
+            $("#memList").empty ();
+        }
+    });
+});
+</script>
 <main role="main" class="container">
     <div class="container text-center">
         <div class="row">
@@ -21,14 +40,65 @@
         </div>
     </div>
     </br>
-<div class="row">
+
+<div class="row"> 
+    
+    <div class="col-2">
+        <ul class="list-group list-group-flush">
+        <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
+            {foreach $mems as $row}
+                {if $row["status"] eq "1"}
+                    <li class="list-group-item">{$row["uid"]}</li>
+                {/if}
+            {/foreach}
+        </ul>
+        <ul class="list-group list-group-flush">
+            <b><li class="list-group-item list-group-item-info text-center">Professor</li></b>
+            {$pro_ex = 0}
+            {foreach $mems as $row}
+                {if $row["status"] eq "2"}
+                    {$pro_ex = 1}
+                    <li class="list-group-item">{$row["uid"]}</li>
+                {/if}
+            {/foreach}
+            {if $pro_ex eq 0}    
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增老師</button>
+            {/if}
+        </ul>
+    </div>
+       
+    <div class="col-8">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">wid</th>
+                    <th scope="col">fname</th>
+                    <th scope="col">ftime</th>
+                    <th scope="col">fintr</th>
+                </tr>
+            </thead>
+            <tbody>
+            {foreach $files as $row}
+                <tr>
+                    <th scope="row">{$row["wid"]}</th>
+                        <td>{$row["fname"]}</td>
+                        <td>{$row["ftime"]}</td>
+                        <td id="fintr">{$row["fintr"]}</td>
+                </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+
     <div class="col-2">
         <div class="btn-group-vertical">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">新增檔案</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_work">新增工作</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
+        <button type="button" class="btn btn-primary" id="memListButton">O成員名單</button>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush" id="memList">
             {foreach $mems as $row}
                 {if $row["status"] eq "1"}
                     <li class="list-group-item list-group-item-warning">{$row["uid"]}</li>
@@ -42,50 +112,7 @@
             {/foreach}
         </ul>
     </div>
-    
-    <div class="col-8">
 
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">wid</th>
-                    <th scope="col">fname</th>
-                    <th scope="col">ftime</th>
-                    <th scope="col">fintr</th>
-                </tr>
-            </thead>
-            <tbody>
-            {foreach $works as $row}
-                <tr>
-                    <th scope="row">{$row["wid"]}</th>
-                        <td>{$row["fname"]}</td>
-                        <td>{$row["ftime"]}</td>
-                        <td id="fintr">{$row["fintr"]}</td>
-                </tr>
-            {/foreach}
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="col-2">
-        <ul class="list-group list-group-flush">
-        <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
-            {foreach $mems as $row}
-                {if $row["status"] eq "1"}
-                    <li class="list-group-item">{$row["uid"]}</li>
-                {/if}
-            {/foreach}
-        </ul>
-        <ul class="list-group list-group-flush">
-            <b><li class="list-group-item list-group-item-info text-center">Professor</li></b>
-            {foreach $mems as $row}
-                {if $row["status"] eq "2"}
-                    <li class="list-group-item">{$row["uid"]}</li>
-                {/if}
-            {/foreach}
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增老師</button>
-        </ul>
-    </div>
 </div>
 
 <!-- new_work -->

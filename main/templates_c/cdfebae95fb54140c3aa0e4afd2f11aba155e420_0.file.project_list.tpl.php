@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-09 16:28:03
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 17:30:50
   from 'C:\flax-project_ctrl_web\main\templates\project_list.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfd1773531686_01509230',
+  'unifunc' => 'content_5cfd262a2213f0_99176092',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cdfebae95fb54140c3aa0e4afd2f11aba155e420' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\project_list.tpl',
-      1 => 1560090282,
+      1 => 1560094129,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfd1773531686_01509230 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd262a2213f0_99176092 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "project_list", 0);
 ?>
 
@@ -43,10 +43,9 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 <main role="main" class="container">
 	<?php if ($_smarty_tpl->tpl_vars['prj_exist']->value == "0") {?>
 		<div class="jumbotron">
-			<h1 class="display-4">哈哈是不是沒有專案齁</h1>
+			<h3 class="display-4">哈哈是不是沒有專案齁</h3><!--字條小-->
 			<p class="lead">想要新增專案嗎</p>
-			<hr class="my-4">
-			<p>試試看下面這顆按鈕</p>
+			<p>試試看下面這顆按鈕</p><!--線刪掉-->
 			<a class="btn btn-primary btn-lg" href="newProject.php" role="button">新增專案</a>
 		</div>
 	<?php } else { ?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-09 16:28:04
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 18:10:45
   from 'C:\flax-project_ctrl_web\main\templates\project_selected.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfd1774ad15d5_10722092',
+  'unifunc' => 'content_5cfd2f85a07475_39894257',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9ceca0716f4c567437ddddc8c818c212af8203da' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\project_selected.tpl',
-      1 => 1560090282,
+      1 => 1560096642,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfd1774ad15d5_10722092 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd2f85a07475_39894257 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "project", 0);
 ?>
 
@@ -41,6 +41,29 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 <?php echo '<script'; ?>
  src="js/header.js"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+ src="js/jquery-3.4.1.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+>
+$(document).ready (function () {
+    var ml = $("#memList").text ();
+    var ms = 0;
+    $("#memList").empty ();
+    $("#memListButton").click (function () {
+        if (ms == 0) {
+            ms = 1;
+            $("#memListButton").html ("。新增成員")
+            $("#memList").html(ml);
+        } else {
+            ms = 0;
+            $("#memListButton").html ("O新增成員")
+            $("#memList").empty ();
+        }
+    });
+});
+<?php echo '</script'; ?>
+>
 <main role="main" class="container">
     <div class="container text-center">
         <div class="row">
@@ -60,14 +83,92 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>/<?php echo $_sm
         </div>
     </div>
     </br>
-<div class="row">
+
+<div class="row"> 
+    
+    <div class="col-2">
+        <ul class="list-group list-group-flush">
+        <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mems']->value, 'row');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
+?>
+                <?php if ($_smarty_tpl->tpl_vars['row']->value["status"] == "1") {?>
+                    <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['row']->value["uid"];?>
+</li>
+                <?php }?>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        </ul>
+        <ul class="list-group list-group-flush">
+            <b><li class="list-group-item list-group-item-info text-center">Professor</li></b>
+            <?php $_smarty_tpl->_assignInScope('pro_ex', 0);?>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mems']->value, 'row');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
+?>
+                <?php if ($_smarty_tpl->tpl_vars['row']->value["status"] == "2") {?>
+                    <?php $_smarty_tpl->_assignInScope('pro_ex', 1);?>
+                    <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['row']->value["uid"];?>
+</li>
+                <?php }?>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            <?php if ($_smarty_tpl->tpl_vars['pro_ex']->value == 0) {?>    
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增老師</button>
+            <?php }?>
+        </ul>
+    </div>
+       
+    <div class="col-8">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">wid</th>
+                    <th scope="col">fname</th>
+                    <th scope="col">ftime</th>
+                    <th scope="col">fintr</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['files']->value, 'row');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
+?>
+                <tr>
+                    <th scope="row"><?php echo $_smarty_tpl->tpl_vars['row']->value["wid"];?>
+</th>
+                        <td><?php echo $_smarty_tpl->tpl_vars['row']->value["fname"];?>
+</td>
+                        <td><?php echo $_smarty_tpl->tpl_vars['row']->value["ftime"];?>
+</td>
+                        <td id="fintr"><?php echo $_smarty_tpl->tpl_vars['row']->value["fintr"];?>
+</td>
+                </tr>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            </tbody>
+        </table>
+    </div>
+
     <div class="col-2">
         <div class="btn-group-vertical">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">新增檔案</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_work">新增工作</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
+        <button type="button" class="btn btn-primary" id="memListButton">O成員名單</button>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush" id="memList">
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mems']->value, 'row');
 if ($_from !== null) {
@@ -91,77 +192,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </ul>
     </div>
-    
-    <div class="col-8">
 
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">wid</th>
-                    <th scope="col">fname</th>
-                    <th scope="col">ftime</th>
-                    <th scope="col">fintr</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['works']->value, 'row');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
-?>
-                <tr>
-                    <th scope="row"><?php echo $_smarty_tpl->tpl_vars['row']->value["wid"];?>
-</th>
-                        <td><?php echo $_smarty_tpl->tpl_vars['row']->value["fname"];?>
-</td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['row']->value["ftime"];?>
-</td>
-                        <td id="fintr"><?php echo $_smarty_tpl->tpl_vars['row']->value["fintr"];?>
-</td>
-                </tr>
-            <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="col-2">
-        <ul class="list-group list-group-flush">
-        <b><li class="list-group-item list-group-item-warning text-center">擁有者</li></b>
-            <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mems']->value, 'row');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
-?>
-                <?php if ($_smarty_tpl->tpl_vars['row']->value["status"] == "1") {?>
-                    <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['row']->value["uid"];?>
-</li>
-                <?php }?>
-            <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        </ul>
-        <ul class="list-group list-group-flush">
-            <b><li class="list-group-item list-group-item-info text-center">Professor</li></b>
-            <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mems']->value, 'row');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
-?>
-                <?php if ($_smarty_tpl->tpl_vars['row']->value["status"] == "2") {?>
-                    <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['row']->value["uid"];?>
-</li>
-                <?php }?>
-            <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增老師</button>
-        </ul>
-    </div>
 </div>
 
 <!-- new_work -->

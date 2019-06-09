@@ -14,10 +14,9 @@
 <main role="main" class="container">
 	{if $prj_exist eq "0"}
 		<div class="jumbotron">
-			<h1 class="display-4">哈哈是不是沒有專案齁</h1>
+			<h3 class="display-4">哈哈是不是沒有專案齁</h3><!--字條小-->
 			<p class="lead">想要新增專案嗎</p>
-			<hr class="my-4">
-			<p>試試看下面這顆按鈕</p>
+			<p>試試看下面這顆按鈕</p><!--線刪掉-->
 			<a class="btn btn-primary btn-lg" href="newProject.php" role="button">新增專案</a>
 		</div>
 	{else}
