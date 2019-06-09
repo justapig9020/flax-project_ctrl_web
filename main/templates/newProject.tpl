@@ -16,13 +16,13 @@
 	<form class="form-newProject" id="newProject" name="form1" method="post" action="">
 		<div class="form-row">
 			<div class="form-group col-md-12">
-				<input class="form-control" type="text" name="pname" placeholder="專題名稱" autofocus="" required="">
+				<input class="form-control" type="text" name="pname" placeholder="專案名稱" autofocus="" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="form-control" type="text" name="pintr" placeholder="專題簡介">
+				<input class="form-control" type="text" name="pintr" placeholder="專案簡介">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增專題"></input>
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增專案"></input>
 			</div>
 		</div>			
 		<div class="form-group col-md-12">

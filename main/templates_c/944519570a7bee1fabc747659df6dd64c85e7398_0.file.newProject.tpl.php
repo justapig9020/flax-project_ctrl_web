@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-09 15:17:18
+/* Smarty version 3.1.34-dev-7, created on 2019-06-09 16:14:12
   from 'D:\DB\flax-project_ctrl_web\main\templates\newProject.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfd06de420f69_79009761',
+  'unifunc' => 'content_5cfd14342c8813_80268087',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '944519570a7bee1fabc747659df6dd64c85e7398' => 
     array (
       0 => 'D:\\DB\\flax-project_ctrl_web\\main\\templates\\newProject.tpl',
-      1 => 1560086231,
+      1 => 1560089650,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfd06de420f69_79009761 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd14342c8813_80268087 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "newProject", 0);
 ?>
 
@@ -45,13 +45,13 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 	<form class="form-newProject" id="newProject" name="form1" method="post" action="">
 		<div class="form-row">
 			<div class="form-group col-md-12">
-				<input class="form-control" type="text" name="pname" placeholder="專題名稱" autofocus="" required="">
+				<input class="form-control" type="text" name="pname" placeholder="專案名稱" autofocus="" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="form-control" type="text" name="pintr" placeholder="專題簡介">
+				<input class="form-control" type="text" name="pintr" placeholder="專案簡介">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增專題"></input>
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="新增專案"></input>
 			</div>
 		</div>			
 		<div class="form-group col-md-12">
