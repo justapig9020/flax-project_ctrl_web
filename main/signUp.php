@@ -1,5 +1,8 @@
 <?php
 require '../libs/Smarty.class.php';
+include ("../include/network.php");
+if (checkIn())
+    header ("location:./overView.php");
 $page = "signUp";
 $smarty = new Smarty;
 //$smarty->debugging = true;

@@ -2,6 +2,7 @@
 require '../libs/Smarty.class.php';
 require '../include/sql.php';
 require '../include/network.php';
+require "../model/get.php";
 $smarty = new Smarty;
 /*   
  *$smarty->debugging = true;
@@ -20,7 +21,6 @@ if (!checkIn()) {
 
 if (isset ($_GET["pid"])) {
     include ("../model/project_selected_model.php");
-    include ("../model/get.php");
     $retMess = "";
     $page = "project_selected";
     $pid = $_GET["pid"];
@@ -81,7 +81,12 @@ if (isset ($_GET["pid"])) {
     $smarty->assign ("retWor", $retWor);
 } else {
     $page = "project_list";
-    include ("../model/project_list_model.php");    
+    $prjs = get_Projs ($_SESSION["user"]);
+    if ($prjs) {
+        $prj_exist = 1;
+    } else {
+        $prj_exist = 0;
+    }
     $smarty->assign ("prjs", $prjs);
     $smarty->assign ("prj_exist", $prj_exist);
 }

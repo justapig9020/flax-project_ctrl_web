@@ -21,7 +21,7 @@ if (!isset ($get_php)) {
         return $works;
     }
 
-    function get_Projects ($uid) {
+    function get_Projs ($uid) {
 /* arguments 
  * name | interview
  * -----|----------
