@@ -1,6 +1,4 @@
 <?php
-include("../include/network.php");
-include ("../include/sql.php");
 if (isset ($_POST["pid"]) and
     isset ($_POST["wmon"])) {
         $pid = $_POST["pid"];
@@ -16,13 +14,13 @@ if (isset ($_POST["pid"]) and
             date_format(end,'%m') as wendm, 
             date_format(end,'%d') as wendd, 
             intr as wintr 
-            from work where ";
+            from work where";
         if ($pid != 0)    
             $sel = $sel."project_id=:pid and";
         else 
             $sel = $sel."project_id in 
                         (select project_id from 
-                        do_proj where user_id = :uid) and ";
+                        do_proj where user_id = :uid)";
         $sel = $sel.":wmon<=month(end) and 
             :wmon>=month(start)";
         try {
@@ -39,7 +37,7 @@ if (isset ($_POST["pid"]) and
                 }
             }
         } catch (PDOException $e) {}
-            $db = null;
+        $db = null;
     echo json_encode($works);
 }
 ?>
