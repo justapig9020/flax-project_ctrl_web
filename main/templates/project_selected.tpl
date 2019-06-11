@@ -17,6 +17,9 @@
 $(document).ready (function () {
     var ml = $("#memList").text ();
     var ms = 0;
+    $(function() {
+        $( document ).tooltip();
+    });
     $("#memList").empty ();
     $("#memListButton").click (function () {
         if (ms == 0) {
@@ -35,7 +38,17 @@ $(document).ready (function () {
     <div class="container text-center">
         <div class="row">
             <div class="col-sm">
-                <p class="h1">{foreach $mems as $row}{if $row["status"] eq 1}{$row["uid"]}{/if}{/foreach}/{$pname}</p>
+                <p class="h1">
+                {$is_own = 0}
+                {foreach $mems as $row}
+                    {if $row["status"] eq 1}
+                        {if $row["uid"] eq $user_id}
+                            {$is_own = 1}
+                        {/if}
+                        {$row["uid"]}/{$pname}
+                    {/if}
+                {/foreach}
+                </p>
             </div>
         </div>
     </div>
@@ -45,6 +58,7 @@ $(document).ready (function () {
     
     <div class="col-2">
         <ul class="list-group">
+        {*
         <li class="list-group-item list-group-item-warning text-center"><b>擁有者</b></li>
             {foreach $mems as $row}
                 {if $row["status"] eq "1"}
@@ -52,21 +66,37 @@ $(document).ready (function () {
                 {/if}
             {/foreach}
             <li class="list-group-item list-group-item-info text-center"><b>Professor</b></li>
+            *}
             {$pro_ex = 0}
             {foreach $mems as $row}
                 {if $row["status"] eq "2"}
                     {$pro_ex = 1}
-                    <li class="list-group-item">{$row["uid"]}</li>
+                    <!--<li class="list-group-item">{$row["uid"]}</li>-->
                 {/if}
             {/foreach}
-            {if $pro_ex eq 0}    
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增老師</button>
+            {if $pro_ex eq 0 && $is_own eq 1}    
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
             {/if}
+            <ul class="list-group">
+            <li class="list-group-item list-group-item-dark text-center" id="mem_list"><b>成員名單</b></li>
+            {foreach $mems as $row}
+                {if $row["status"] eq "1"}
+                    <li class="list-group-item list-group-item-warning" title="組長">{$row["uid"]}</li>
+                {/if}
+                {if $row["status"] eq "2"}
+                    <li class="list-group-item list-group-item-info" title="指導">{$row["uid"]}</li>
+                {/if}
+                {if $row["status"] eq "0"}
+                    <li class="list-group-item" title="成員">{$row["uid"]}</li>
+                {/if}
+            {/foreach}
+        </ul>
+
         </ul>
     </div>
-       
     <div class="col-8">
         <table class="table table-hover">
+            {*{include file="../data.html"}*}   
             <thead>
                 <tr>
                     <th scope="col">wname</th>
@@ -108,6 +138,7 @@ $(document).ready (function () {
                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除工作</button>
                 </div>
             </div>
+            {if $is_own eq 1}
             <div class="btn-group dropright" role="group">
                 <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     成員
@@ -117,23 +148,10 @@ $(document).ready (function () {
                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除成員</button>
                 </div>
             </div>
+            {/if}
         </div>
         </br>
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-dark text-center"><b>成員名單</b></li>
-            {foreach $mems as $row}
-                {if $row["status"] eq "1"}
-                    <li class="list-group-item list-group-item-warning">{$row["uid"]}</li>
-                {/if}
-                {if $row["status"] eq "2"}
-                    <li class="list-group-item list-group-item-info">{$row["uid"]}</li>
-                {/if}
-                {if $row["status"] eq "0"}
-                    <li class="list-group-item">{$row["uid"]}</li>
-                {/if}
-            {/foreach}
-        </ul>
-    </div>
+            </div>
 
 </div>
 

@@ -130,6 +130,109 @@ if (!isset ($__SQL__)) {
 
     }
 
+    function rm_Proj ($uid, $pid) {
+        $db = str_con();
+        //echo "in func</br>";
+        $retMess=NULL;
+		if ($db){
+            //echo "連線成功</br>";
+            $sel = "select status from do_proj where project_id = :pid and user_id = :uid";
+            try {
+				$ins = $db->prepare($sel); 
+                if($ins){
+					$ins->bindParam(':uid',$uid);
+					$ins->bindParam(':pid',$pid);
+                    $result = $ins->execute();
+					if($result){
+							$row = $ins->fetch(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                }
+            } catch (PDOException $e){}
+            if ($row) {
+                if ($row["status"] == 1) {
+                    $sel = "delete from do_proj
+                            where project_id = :pid";
+		    	    try {
+	    			    $ins = $db->prepare($sel); 
+    				    if($ins){
+			    		    $ins->bindParam(':pid',$pid);
+                            $ins->execute();
+                        }else{
+                            echo "insert error";
+                        }
+                    } catch (PDOException $e){}
+                        
+                    $sel = "delete from work
+                            where project_id = :pid";
+		    	    try {
+	    			    $ins = $db->prepare($sel); 
+    				    if($ins){
+			    		    $ins->bindParam(':pid',$pid);
+                            $ins->execute();
+                        }else{
+                            echo "insert error";
+                        }
+                    } catch (PDOException $e){}
+                        
+                    $sel = "delete from modify
+                            where file_id in (select id from file where project_id = :pid)";
+		    	    try {
+	    			    $ins = $db->prepare($sel); 
+    				    if($ins){
+			    		    $ins->bindParam(':pid',$pid);
+                            $ins->execute();
+                        }else{
+                            echo "insert error";
+                        }
+                    } catch (PDOException $e){}
+                        
+                    $sel = "delete from file
+                            where project_id = :pid";
+		    	    try {
+	    			    $ins = $db->prepare($sel); 
+    				    if($ins){
+			    		    $ins->bindParam(':pid',$pid);
+                            $ins->execute();
+                        }else{
+                            echo "insert error";
+                        }
+                    } catch (PDOException $e){}
+
+                    $sel = "delete from project
+                            where id = :pid";
+		    	    try {
+	    			    $ins = $db->prepare($sel); 
+    				    if($ins){
+			    		    $ins->bindParam(':pid',$pid);
+                            $ins->execute();
+                        }else{
+                            echo "insert error";
+                        }
+                    } catch (PDOException $e){}
+                } else {
+                    $sel = "delete from do_proj
+                            where project_id = :pid and user_id = :uid";
+		    	    try {
+	    			    $ins = $db->prepare($sel); 
+    				    if($ins){
+                            $ins->bindParam(':pid',$pid);
+                            $ins->bindParam(':uid',$uid);
+                            $ins->execute();
+                        }else{
+                            echo "insert error";
+                        }
+                    } catch (PDOException $e){}
+                }
+            } else {
+            } 
+		}
+        //echo "in fun: ".$retV."</br>";
+		$db=null;
+    }
+        
     function new_Mem ($uid, $pid)
     {
         $db = str_con();

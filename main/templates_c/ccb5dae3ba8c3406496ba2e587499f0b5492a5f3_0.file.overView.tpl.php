@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-09 17:17:05
+/* Smarty version 3.1.34-dev-7, created on 2019-06-11 00:26:07
   from 'C:\flax-project_ctrl_web\main\templates\overView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfd22f142a240_33633619',
+  'unifunc' => 'content_5cfed8ffe7a823_72620640',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ccb5dae3ba8c3406496ba2e587499f0b5492a5f3' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\overView.tpl',
-      1 => 1560093412,
+      1 => 1560201977,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfd22f142a240_33633619 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfed8ffe7a823_72620640 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "overView", 0);
 ?>
 
@@ -41,9 +41,9 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
 <?php echo '<script'; ?>
  src="js/header.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+<!--<?php echo '<script'; ?>
  src="js/works.js"><?php echo '</script'; ?>
->
+>-->
 
 <main role="main" class="container">
 <div class="row">
@@ -61,19 +61,19 @@ _<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_t
                 </div>
             </div>
             <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Professor
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
                     <a class="dropdown-item" href="#">Dropdown link</a>
                     <a class="dropdown-item" href="#">Dropdown link</a>
                 </div>
             </div>
             <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnGroupDrop3" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Member
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
                     <a class="dropdown-item" href="#">Dropdown link</a>
                     <a class="dropdown-item" href="#">Dropdown link</a>
                 </div>

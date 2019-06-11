@@ -17,7 +17,9 @@ if (!checkIn()) {
     header("location:index.php");
 }
 
-
+if (isset ($_POST["dpid"])) {
+    rm_Proj ($_SESSION["user"], $_POST["dpid"]);
+}
 
 if (isset ($_GET["pid"])) {
     include ("../model/project_selected_model.php");
@@ -90,6 +92,7 @@ if (isset ($_GET["pid"])) {
     $smarty->assign ("prjs", $prjs);
     $smarty->assign ("prj_exist", $prj_exist);
 }
+$smarty->assign ("user_id", $_SESSION["user"]);
 $smarty->assign ("retMesse", $retMesse);
 $go = sprintf ("%s.tpl", $page);
 $smarty->display ($go);

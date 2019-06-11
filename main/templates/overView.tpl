@@ -10,7 +10,7 @@
 <body>
 <script src="jquery-3.4.1.js"></script>
 <script src="js/header.js"></script>
-<script src="js/works.js"></script>
+<!--<script src="js/works.js"></script>-->
 
 <main role="main" class="container">
 <div class="row">

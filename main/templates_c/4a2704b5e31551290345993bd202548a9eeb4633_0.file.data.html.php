@@ -1,4 +1,27 @@
-<div class="calendar">
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2019-06-10 23:13:18
+  from 'C:\flax-project_ctrl_web\main\data.html' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5cfec7eef00f12_75902251',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4a2704b5e31551290345993bd202548a9eeb4633' => 
+    array (
+      0 => 'C:\\flax-project_ctrl_web\\main\\data.html',
+      1 => 1560200844,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5cfec7eef00f12_75902251 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="calendar">
   <div class="title">
 
 <div style="background-color:orange;">
@@ -83,8 +106,11 @@ height:5px;
     background:#408080; 
 }
 </style>
-<!--<script src="js/jquery-3.4.1.js"></script>-->
-<script>
+<!--<?php echo '<script'; ?>
+ src="js/jquery-3.4.1.js"><?php echo '</script'; ?>
+>-->
+<?php echo '<script'; ?>
+>
 var month_olympic = [31,29,31,30,31,30,31,31,30,31,30,31];
 var month_normal = [31,28,31,30,31,30,31,31,30,31,30,31];
 var month_name = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
@@ -220,7 +246,10 @@ next.onclick = function(e){
 	}
 	refreshDate();
 }
-        </script>
+        <?php echo '</script'; ?>
+>
     </div>
   </div>
 </div>
+<?php }
+}
