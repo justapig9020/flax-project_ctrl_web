@@ -5,7 +5,7 @@
    {literal}
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/normal.css"/>
-	<link rel="stylesheet" type="text/css" href="./css/project.css"/>
+	<link rel="stylesheet" type="text/css" href="css/project.css"/>
    {/literal}
 </head>
 <body>
@@ -15,21 +15,20 @@
 <script src="js/jquery-3.4.1.js"></script>
 <script>
 $(document).ready (function () {
-    var ml = $("#memList").text ();
+    var ml = $("#mem_list").html ();
     var ms = 0;
     $(function() {
         $( document ).tooltip();
     });
-    $("#memList").empty ();
-    $("#memListButton").click (function () {
+    $("#mem_title").click (function () {
         if (ms == 0) {
             ms = 1;
-            $("#memListButton").html ("。新增成員")
-            $("#memList").html(ml);
+            $("#mem_title").html ("<b>。  成員</b>")
+            //$("#mem_list").html(ml);
         } else {
             ms = 0;
-            $("#memListButton").html ("O新增成員")
-            $("#memList").empty ();
+            $("#mem_title").html ("<b>O  成員</b>")
+           //$("#mem_list").empty ();
         }
     });
 });
@@ -78,18 +77,21 @@ $(document).ready (function () {
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
             {/if}
             <ul class="list-group">
-            <li class="list-group-item list-group-item-dark text-center" id="mem_list"><b>成員名單</b></li>
+            <!--<li class="list-group-item list-group-item-dark text-center" id="mem_title"><b>O成員</b></li>-->
+            <li  type="button" class="btn btn-primary" data-toggle="modal"  id="mem_title"><b>O  成員</b></li>
+            <div id="mem_list">
             {foreach $mems as $row}
                 {if $row["status"] eq "1"}
-                    <li class="list-group-item list-group-item-warning" title="組長">{$row["uid"]}</li>
+                    <li class="list-group-item list-group-item-warning" title="組長" id="mem_list_lear">{$row["uid"]}</li>
                 {/if}
                 {if $row["status"] eq "2"}
-                    <li class="list-group-item list-group-item-info" title="指導">{$row["uid"]}</li>
+                    <li class="list-group-item list-group-item-info" title="指導" id="mem_list_pro">{$row["uid"]}</li>
                 {/if}
                 {if $row["status"] eq "0"}
-                    <li class="list-group-item" title="成員">{$row["uid"]}</li>
+                    <li class="list-group-item" title="成員" id="mem_list_mem"><td>{$row["uid"]}</td>|<td id="mem_list_del">del</td></li>
                 {/if}
             {/foreach}
+            </div>
         </ul>
 
         </ul>
