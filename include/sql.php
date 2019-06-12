@@ -16,7 +16,7 @@ if (!isset ($__SQL__)) {
 		return $db;
     }
 
-	function get_pid ($pname,$oid)
+    function get_pid ($pname,$oid)
 	{
 		$db = str_con();
         //echo "in func</br>";
@@ -55,6 +55,134 @@ if (!isset ($__SQL__)) {
 		return $retV;
     }
     
+    function new_file ($fname, $uid, $pid) 
+    {
+        $db = str_con();
+        //echo "in func</br>";
+        $retMess=NULL;
+        if ($db){
+            $sel = "select status from do_proj where user_id=:uid and project_id=:pid";  
+            try {
+				$ins = $db->prepare($sel); 
+                if($ins){
+					$ins->bindParam(':uid',$uid);
+					$ins->bindParam(':pid',$pid);
+                    $result = $ins->execute();
+					if($result){
+							$status = $ins->fetch(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                }
+            } catch (PDOException $e){}
+            if ($status) {
+                $dst = $status["status"];
+                //echo "連線成功</br>";
+                $sel = "select id, own_id, premission from file where name=:fname and project_id=:pid";  
+                try {
+				    $ins = $db->prepare($sel); 
+                    if($ins){
+				    $ins->bindParam(':fname',$fname);
+				    $ins->bindParam(':pid',$pid);
+                        $result = $ins->execute();
+                        if($result){
+						    $row = $ins->fetch(PDO::FETCH_ASSOC);
+					    }else{
+						    $error = $ins->errorInfo();
+                        }
+                    }
+                } catch (PDOException $e){}
+                /*file exiet check premission*/    
+                if ($row) {
+                    $fid = $row["id"];
+                    $oid = $row["own_id"];
+                    $fpre = $row["premission"];
+                    if ($uid == $oid || $dst == 1) {
+                        $sel = "insert into modify
+                                (file_id, user_id, do) 
+                                value 
+                                (:fid, :uid, 1)";
+                        try {
+				            $ins = $db->prepare($sel); 
+        		            if($ins){
+                                $ins->bindParam(':fid', $fid);
+					            $ins->bindParam(':uid',$uid);
+                                $ins->execute();
+                                $retMess = 1;
+                            }
+                        } catch (PDOException $e){}
+                    } else if ($dst == 0) {
+                        if (fpre&0x8) {
+                            $sel = "insert into modify
+                                    (file_id, user_id, do) 
+                                    value 
+                                    (:fid, uid, 1)";
+                            try {
+				                $ins = $db->prepare($sel); 
+        		                if($ins){
+                                    $ins->bindParam(':pname', $pname);
+    					            $ins->bindParam(':pintr',$pintr);
+                                    $ins->execute();
+                                    $retMess = 1;
+                                }
+                            } catch (PDOException $e){}
+                        }else {
+                            $retMess = 0;
+                        }
+                    } else {
+                        $retMess = 0;
+                    }
+                } else {
+                    $sel = "insert into file
+                            (name, project_id, own_id) 
+                            value 
+                            (:fname, :pid, :uid)";
+                    try {
+				        $ins = $db->prepare($sel); 
+        		        if($ins){
+                            $ins->bindParam(':fname', $fname);
+					        $ins->bindParam(':pid',$pid);
+					        $ins->bindParam(':uid',$uid);
+                            $ins->execute();
+                        }
+                    } catch (PDOException $e){}
+                    $sel = "SELECT LAST_INSERT_ID()";
+                    try {
+			            $ins = $db->prepare($sel); 
+        	            if($ins){
+                            $result = $ins->execute();
+                            if($result){
+						        $getId = $ins->fetch(PDO::FETCH_NUM);
+					        }else{
+						        $error = $ins->errorInfo();
+                            }
+                        }
+                        $fid = $getId[0];
+                    } catch (PDOException $e){}
+                    $sel = "insert into modify
+                            (file_id, user_id, do) 
+                            value 
+                            (:fid, :uid, 0)";
+                    try {
+			            $ins = $db->prepare($sel); 
+        	            if($ins){
+                            $ins->bindParam(':fid', $fid);
+		    			    $ins->bindParam(':uid',$uid);
+                            $ins->execute();
+                        }
+                        $retMess = "2";
+                    } catch (PDOException $e){}
+                }
+            } else {
+                $retMess = "-1";
+            }
+		}
+        //echo "in fun: ".$retV."</br>";
+		$db=null;
+		return $retMess;
+    }
+
     function new_proj ($pname, $pintr, $uid)
     {
         $db = str_con();
@@ -116,7 +244,8 @@ if (!isset ($__SQL__)) {
                         $ins->execute();
                     }
                 } catch (PDOException $e){}
-
+                $ndir = sprintf ("mkdir \"users/%s/%s\\\"",$uid,$pname);
+                echo shell_exec ($ndir);
                 $retMess = "專案新增完成";
                 header ("location:./project.php");
             } else {
@@ -136,7 +265,7 @@ if (!isset ($__SQL__)) {
         $retMess=NULL;
 		if ($db){
             //echo "連線成功</br>";
-            $sel = "select status from do_proj where project_id = :pid and user_id = :uid";
+            $sel = "select do_proj.status,project.name as pname from do_proj inner join project on do_proj.project_id = project.id where project_id = :pid and user_id = :uid";
             try {
 				$ins = $db->prepare($sel); 
                 if($ins){
@@ -152,6 +281,7 @@ if (!isset ($__SQL__)) {
                 }
             } catch (PDOException $e){}
             if ($row) {
+                $pname=$row["pname"];
                 if ($row["status"] == 1) {
                     $sel = "delete from do_proj
                             where project_id = :pid";
@@ -226,7 +356,12 @@ if (!isset ($__SQL__)) {
                         }
                     } catch (PDOException $e){}
                 }
+                $rd = sprintf ("rd/s/q \"users/%s/%s\\\"",$uid,$pname);
+                //echo $rd;
+                shell_exec ($rd);
+                //rd/s/q
             } else {
+                
             } 
 		}
         //echo "in fun: ".$retV."</br>";

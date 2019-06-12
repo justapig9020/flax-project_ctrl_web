@@ -24,8 +24,26 @@ if (isset ($_POST["dpid"])) {
 if (isset ($_GET["pid"])) {
     include ("../model/project_selected_model.php");
     $retMess = "";
+    $retNF = "";
     $page = "project_selected";
     $pid = $_GET["pid"];
+    if (isset ($_FILES)){
+        foreach ($_FILES as $file) {
+        // string 型態，表示上傳單一檔案
+        // array 型態，表示上傳多個檔案
+        if (is_array($file['name'])) {
+            foreach ($file['name'] as $key => $value) {
+                $retNF = new_file ($file['name'][$key], $_SESSION["user"], $pid);
+                /*$files[$i]['name'] = $file['name'][$key];
+                $files[$i]['type'] = $file['type'][$key];
+                $files[$i]['tmp_name'] = $file['tmp_name'][$key];
+                $files[$i]['error'] = $file['error'][$key];
+                $files[$i]['size'] = $file['size'][$key];
+                $i++;*/
+            }
+        }
+    }
+    }
     if (isset ($_POST["wname"]) and
         isset ($_POST["wstart"]) and
         isset ($_POST["wend"])

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2019-06-11 00:46:13
+/* Smarty version 3.1.34-dev-7, created on 2019-06-12 01:51:46
   from 'C:\flax-project_ctrl_web\main\templates\project_list.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5cfeddb572e116_70538718',
+  'unifunc' => 'content_5d003e92a3e569_76304396',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cdfebae95fb54140c3aa0e4afd2f11aba155e420' => 
     array (
       0 => 'C:\\flax-project_ctrl_web\\main\\templates\\project_list.tpl',
-      1 => 1560206771,
+      1 => 1560297099,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfeddb572e116_70538718 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d003e92a3e569_76304396 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "normal.conf", "project_list", 0);
 ?>
 
@@ -60,7 +60,7 @@ function d_select (dpid) {
 	<?php if ($_smarty_tpl->tpl_vars['prj_exist']->value == "0") {?>
 		<div class="card text-center">
             <div class="card-body">
-                <h5 class="card-title">想要新增專案嗎</h5>
+                <h5 class="card-title">少年，你渴望專案嗎?</h5>
                 <p class="card-text">試試看下面這顆按鈕</p>
                 <a href="newproject.php" class="btn btn-primary">新增專案</a>
             </div>
@@ -79,7 +79,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
  / <?php echo $_smarty_tpl->tpl_vars['row']->value["pname"];?>
 </a>
                 <a class="list-group-item list-group-item-action list-group-item-danger text-center" onclick="d_select (<?php echo $_smarty_tpl->tpl_vars['row']->value['pid'];?>
-)">刪除</a>
+)">
+                <?php if ($_smarty_tpl->tpl_vars['user_id']->value == $_smarty_tpl->tpl_vars['row']->value["oid"]) {?>
+                刪除
+                <?php } else { ?>
+                離開
+                <?php }?>
+                專案</a>
                 </br>
             </div>
 		</div>

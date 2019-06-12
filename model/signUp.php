@@ -62,9 +62,9 @@ if(isset($_POST['id'])
                         echo "insert error: ".$e;
                         exit();
                     }
-                    $ndir = sprintf("mkdir \"../users/%s\\\"",$id);
+                    $ndir = sprintf("mkdir \"users/%s\\\"",$id);
                     shell_exec($ndir);
-                    $ndir = sprintf("mkdir \"../users/%s/sticker\\\"",$id);
+                    $ndir = sprintf("mkdir \"users/%s/sticker\\\"",$id);
                     shell_exec($ndir);
                     $retMesse = "完成";
                 }else{

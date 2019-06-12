@@ -13,26 +13,64 @@
 </header>
 <script src="js/header.js"></script>
 <script src="js/jquery-3.4.1.js"></script>
+{literal}
 <script>
+var ms = 0;
+/*
+var d_mem;
+    d_mem = function (duid) {
+        if (ms == 1) {
+            $.post ("project.php", {"duid": duid});
+            location.reload();
+        }
+    }
+    */
+//$("#file_array_last").
 $(document).ready (function () {
     var ml = $("#mem_list").html ();
-    var ms = 0;
-    $(function() {
-        $( document ).tooltip();
+    //function d_m(duid) {
+    //}
+//    $(function() {
+//        $( document ).tooltip();
+//    });
+//    if ($("#file_array_last").val () != "") {
+//        alert (1);
+//   }
+    $("#more_files").click (function (){
+        str = '<input type="file" name="myFile[]" id="file_array" style="display: block;margin-bottom: 5px;">';
+        $("#file_list").append (str);
+
+    });
+
+    /*
+    (function () {
+        alert (1);
+    });
+    */
+    $("#mem_list").click (function (event) {
+        $target = $(event.target);
+        if (ms == 1 && $target.is("#mem_list_mem")) {
+            duid = $target.html();
+            if (window.confirm("確定要移除成員" + duid)) {
+                $.post ("project.php", {"duid": duid});
+                location.reload();
+            }
+        }
     });
     $("#mem_title").click (function () {
         if (ms == 0) {
             ms = 1;
-            $("#mem_title").html ("<b>。  成員</b>")
-            //$("#mem_list").html(ml);
+            $("#mem_title").html ("<b>刪除成員</b>")
+            $("#mem_list").html(ml);
         } else {
             ms = 0;
-            $("#mem_title").html ("<b>O  成員</b>")
+            $("#mem_title").html ("<b>成員</b>")
            //$("#mem_list").empty ();
         }
     });
 });
 </script>
+{/literal}
 <main role="main" class="container">
     <div class="container text-center">
         <div class="row">
@@ -78,17 +116,17 @@ $(document).ready (function () {
             {/if}
             <ul class="list-group">
             <!--<li class="list-group-item list-group-item-dark text-center" id="mem_title"><b>O成員</b></li>-->
-            <li  type="button" class="btn btn-primary" data-toggle="modal"  id="mem_title"><b>O  成員</b></li>
+            <li  type="button" class="btn btn-primary" data-toggle="modal"  id="mem_title"><b>成員</b></li>
             <div id="mem_list">
             {foreach $mems as $row}
                 {if $row["status"] eq "1"}
-                    <li class="list-group-item list-group-item-warning" title="組長" id="mem_list_lear">{$row["uid"]}</li>
+                    <li class="list-group-item list-group-item-warning" title="組長" id="mem_list_lea">{$row["uid"]}</li>
                 {/if}
                 {if $row["status"] eq "2"}
-                    <li class="list-group-item list-group-item-info" title="指導" id="mem_list_pro">{$row["uid"]}</li>
+                    <li class="list-group-item list-group-item-info" title="指導" id="mem_list_mem" >{$row["uid"]}</li>
                 {/if}
                 {if $row["status"] eq "0"}
-                    <li class="list-group-item" title="成員" id="mem_list_mem"><td>{$row["uid"]}</td>|<td id="mem_list_del">del</td></li>
+                    <li class="list-group-item" title="成員" id="mem_list_mem" >{$row["uid"]}</li>
                 {/if}
             {/foreach}
             </div>
@@ -127,7 +165,7 @@ $(document).ready (function () {
                     檔案
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">新增檔案</button>
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_file">新增檔案</button>
                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除檔案</button>
                 </div>
             </div>
@@ -156,6 +194,33 @@ $(document).ready (function () {
             </div>
 
 </div>
+<!-- new_file -->
+<div class="modal fade" id="new_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">新增工作</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                <!-- 限制上傳檔案的最大值 -->
+                <div id="file_list">
+                    <!-- accept 限制上傳檔案類型。多檔案上傳 name 的屬性值須定義為 array -->
+                    <input type="file" name="myFile[]" id="file_array" style="display: block;margin-bottom: 5px;">
+                    <!-- 使用 html 5 實現單一上傳框可多選檔案方式，須新增 multiple 元素 -->
+                    <!-- <input type="file" name="myFile[]" id="" accept="image/jpeg,image/jpg,image/gif,image/png" multiple> -->
+                </div>
+                <div>
+                    <input type="button" id="more_files" value="更多檔案">
+                </div>
+                <input type="submit" value="上傳檔案">
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <!-- new_work -->
 <div class="modal fade" id="new_work" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
