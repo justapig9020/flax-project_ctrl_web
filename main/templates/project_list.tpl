@@ -16,8 +16,8 @@
 <script>
 //$(document).ready (
 //);
-function d_select (dpid,mes) {
-    if (window.confirm("確定要"+ mes + ": " + duid)) {
+function d_select (dpid,mes,upname) {
+    if (window.confirm("確定要"+ mes + ": " + upname)) {
         $.post ("project.php", {"dpid": dpid});
         location.reload();
     }
@@ -41,12 +41,11 @@ function d_select (dpid,mes) {
     {else}
         {$list_mes = "離開"}
     {/if}
-
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="list-group">
 				<a href="./project.php?pid={$row["pid"]}" class="list-group-item list-group-item-action">{$row["oid"]} / {$row["pname"]}</a>
-                <a class="list-group-item list-group-item-action list-group-item-danger text-center" onclick="d_select ({$row['pid']},{$list_mes})">{$list_mes}專案</a>
+                <a class="list-group-item list-group-item-action list-group-item-danger text-center" onclick="d_select ({$row['pid']},'{$list_mes}','{$row["oid"]} / {$row["pname"]}')">{$list_mes}專案</a>
                 </br>
             </div>
 		</div>

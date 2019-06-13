@@ -130,6 +130,8 @@ $(document).ready (function () {
             </tr>
         </table>
         <div>
+            <div id="loading">
+            </div>
             <div id="show_works">
                 <div style="background-color:orange;">
                     <h1 class="green" id="gantt-month">月份</h1>
@@ -157,8 +159,6 @@ $(document).ready (function () {
                 </div>
             </div>
             <div id="show_files">
-            </div>
-            <div id="loading">
             </div>
          </div>
     </div>
