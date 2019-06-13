@@ -12,47 +12,28 @@
 <header>
 </header>
 <script src="js/header.js"></script>
-<script src="js/jquery-3.4.1.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+var pid = {$pid};
+</script>
+<script src="js/project_selected_show_board.js"></script>
 {literal}
 <script>
 var ms = 0;
-/*
-var d_mem;
-    d_mem = function (duid) {
-        if (ms == 1) {
-            $.post ("project.php", {"duid": duid});
-            location.reload();
-        }
-    }
-    */
-//$("#file_array_last").
 $(document).ready (function () {
     var ml = $("#mem_list").html ();
-    //function d_m(duid) {
-    //}
-//    $(function() {
-//        $( document ).tooltip();
-//    });
-//    if ($("#file_array_last").val () != "") {
-//        alert (1);
-//   }
     $("#more_files").click (function (){
         str = '<input type="file" name="myFile[]" id="file_array" style="display: block;margin-bottom: 5px;">';
         $("#file_list").append (str);
 
     });
 
-    /*
-    (function () {
-        alert (1);
-    });
-    */
     $("#mem_list").click (function (event) {
         $target = $(event.target);
         if (ms == 1 && $target.is("#mem_list_mem")) {
             duid = $target.html();
             if (window.confirm("確定要移除成員" + duid)) {
-                $.post ("project.php", {"duid": duid});
+                $.POST ("project.php", {"duid": duid});
                 location.reload();
             }
         }
@@ -65,7 +46,6 @@ $(document).ready (function () {
         } else {
             ms = 0;
             $("#mem_title").html ("<b>成員</b>")
-           //$("#mem_list").empty ();
         }
     });
 });
@@ -135,29 +115,23 @@ $(document).ready (function () {
         </ul>
     </div>
     <div class="col-8">
-        <table class="table table-hover">
-            {*{include file="../data.html"}*}   
-            <thead>
-                <tr>
-                    <th scope="col">wname</th>
-                    <th scope="col">wstart</th>
-                    <th scope="col">wend</th>
-                    <th scope="col">wintr</th>
-                </tr>
-            </thead>
-            <tbody>
-            {foreach $works as $row}
-                <tr>
-                    <th scope="row">{$row["wname"]}</th>
-                        <td>{$row["wstarty"]}/{$row["wstartm"]}/{$row["wstartd"]}/</td>
-                        <td>{$row["wendy"]}/{$row["wendm"]}/{$row["wendd"]}</td>
-                        <td id="fintr">{$row["intr"]}</td>
-                </tr>
-            {/foreach}
-            </tbody>
+        <table>
+            <tr>
+                <td>
+                    <input type="button" id="show_files" value="顯示檔案">
+                </td>
+                <td>
+                    <input type="button" id="show_works" value="顯示工作">
+                </td>
+            </tr>
         </table>
+        <div>
+            <div id="show_board">
+            </div>
+            <div id="loading">
+            </div>
+         </div>
     </div>
-
     <div class="col-2">
         <div class="btn-group-vertical">
             <div class="btn-group dropright" role="group">
@@ -166,7 +140,7 @@ $(document).ready (function () {
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_file">新增檔案</button>
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除檔案</button>
+                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除檔案</button>
                 </div>
             </div>
             <div class="btn-group dropright" role="group">
@@ -175,7 +149,7 @@ $(document).ready (function () {
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_work">新增工作</button>
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除工作</button>
+                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除工作</button>
                 </div>
             </div>
             {if $is_own eq 1}
@@ -190,9 +164,7 @@ $(document).ready (function () {
             </div>
             {/if}
         </div>
-        </br>
-            </div>
-
+    </div>
 </div>
 <!-- new_file -->
 <div class="modal fade" id="new_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -294,10 +266,9 @@ $(document).ready (function () {
     </div>
 </div>
 </main><!-- /.container -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <footer>
 </footer>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </html>

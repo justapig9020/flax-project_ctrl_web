@@ -89,13 +89,10 @@ if (isset ($_GET["pid"])) {
     } else {
         $wmon = (int) date('m', strtotime('-0 month'));
     }
-    $works = get_Works ($pid, $wmon);
-    $files = get_Files ($pid);
     $pname = get_Pname ($pid);
     $smarty->assign ("pname", $pname);
+    $smarty->assign ("pid", $pid);
     $smarty->assign ("mems", $mems);
-    $smarty->assign ("works", $works);
-    $smarty->assign ("files", $files);
     $smarty->assign ("retMem", $retMem);
     $smarty->assign ("retTea", $retTea);
     $smarty->assign ("retWor", $retWor);

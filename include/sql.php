@@ -54,7 +54,32 @@ if (!isset ($__SQL__)) {
         //echo "in fun: ".$retV."</br>";
 		return $retV;
     }
-    
+
+    function doing_proj ($uid, $pid) {
+        $ret = 0;
+        $db = str_con();
+        if ($db){
+            $sel = "select * from do_proj where user_id=:uid and project_id=:pid";  
+            try {
+				$ins = $db->prepare($sel); 
+                if($ins){
+					$ins->bindParam(':uid',$uid);
+					$ins->bindParam(':pid',$pid);
+                    $result = $ins->execute();
+					if($result){
+							$status = $ins->fetch(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                    if ($status) 
+                        $ret = 1;
+                }
+            } catch (PDOException $e){}
+        }
+        return $ret;
+    }
+
     function new_file ($fname, $uid, $pid) 
     {
         $db = str_con();
