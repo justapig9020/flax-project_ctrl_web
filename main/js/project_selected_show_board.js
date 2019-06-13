@@ -25,6 +25,7 @@ function show_works () {
    		url: "./get_work.php",
 	    type: "POST",
         async: true,
+        dataType: 'json',
         data: {
             pid: pid
 	    },
@@ -32,15 +33,14 @@ function show_works () {
         	alert ('error');
 	    },
     	success : function (response) {
-           	//$('#show_works').append (response);
-	        //$("#show_works").fadeIn ();
-            for (work in response) {
-                for (item in work) {
-
-                }
+            /*len = response.length;
+            document.write (len+"</br>");
+            for (i=0 ; i<len; i++) {
+                document.write (response[i].wname+"</br>");
             }
+            */
                 
-            //refreshDate (response);
+            refreshDate (response);
             $("#show_works").attr ("style","");
             //alert (1);
         }

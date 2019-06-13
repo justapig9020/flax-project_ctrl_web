@@ -10,6 +10,8 @@ var my_date = new Date();
 var my_year = my_date.getFullYear();
 var my_month = my_date.getMonth();
 var my_day = my_date.getDate();
+var BGC = ["black_font1","black_font2","black_font3","black_font4","black_font5",
+			"black_font6","black_font7","black_font8","black_font9","black_font10"];
 // get first day of month
 function dayStart(month, year) {
 	var tmpDate = new Date(year, month, 1);
@@ -26,31 +28,100 @@ function daysMonth(month, year) {
 }
 //export 
 function refreshDate(works){
-    for (work in works) {
-        document.write ("name:" + work["wname"] + ", start_data: " + work["wstarty"] + "/" + work["wstartm"] + "/" + work["wstartd"]);
-    }
+    //alert ("in");
     var str = "";
+    var len = works.length;
 	var totalDay = daysMonth(my_month, my_year); // get total days of month
 	var firstDay = dayStart(my_month, my_year); 
 	var myclass;
-	for(var i=1; i<firstDay; i++){ 
-		str += "<li></li>"; 
+	var i,o;
+    var arr = new Array ();
+    for( i=1; i<firstDay; i++){ 
+		str += "<li></li>";
+        arr[(i-1)%7] = new Array ();
+        for (p=0; p<len; p++) {
+            arr[(i-1)%7][p] = 1;
+            if ((works[p].wstartm < my_month || 
+                (works[p].wstaryd <= o+7 &&
+                 works[p].wstartm == my_month )) &&
+                (works[p].wstartm > my_month || 
+                (works[p].wstaryd >= o &&
+                 works[p].wstartm == my_month ))) {
+                arr[(i-1)%7][p] = 1;
+            } else {
+                arr[(i-1)%7][p] = 0;
+            }
+        }
+ 
 	}
-	for(var i=1; i<=totalDay; i++){
-		if((i<my_day && my_year==my_date.getFullYear() 
+	for( o=1; o<=totalDay; o++,i++){
+        if ((i-1)%7 == 0) {
+            for (wx=0; wx<len; wx++) {
+                var sbuf = "";
+                var ibuf = 0;
+                for (wy=0; wy<7; wy++) {
+                    ibuf += arr[wy][wx];
+                    if (arr[wy][wx] == 1)
+						sbuf += "<li class='"+ BGC[wx] +"'>"+works[wx].wname+"</li>";
+                    else 
+                        sbuf +="<li></li>"
+                }
+                if (ibuf != 0)
+                    str += sbuf;
+            }
+            arr = new Array ();
+        }
+		if((o<my_day && my_year==my_date.getFullYear() 
             && my_month==my_date.getMonth()) 
             || my_year<my_date.getFullYear() 
             || ( my_year==my_date.getFullYear() 
             && my_month<my_date.getMonth())){ 
 			myclass = " class='lightgrey'"; 
-		}else if (i==my_day && my_year==my_date.getFullYear()
+		}else if (o==my_day && my_year==my_date.getFullYear()
                     && my_month==my_date.getMonth()){
-			myclass = " class='green greenbox'";
+			myclass = " class='black_font greenbox'";
 		}else{
 			myclass = " class='darkgrey'"; 
 		}
-		str += "<li"+myclass+">"+i+"</li>"; 
+		str += "<li"+myclass+">"+o+"</li>";
+        arr[(i-1)%7] = new Array ();
+        for (p=0; p<len; p++) {
+            arr[(i-1)%7][p] = 1;
+            console.log ("startm: "+Number (works[p].wstartm));
+            console.log ("mon: "+(my_month+1));
+            console.log ("x:"+((i-1)%7)+",y:"+p);
+            console.log ("o:" + o);
+            console.log ("startd: "+works[p].wstartd);
+            console.log ("endd: "+works[p].wendd);
+            if ((Number (works[p].wstartm) < my_month+1 || 
+                (Number (works[p].wstartd) <= o &&
+                 Number (works[p].wstartm) == my_month+1 )) &&
+                (Number (works[p].wendm) > my_month+1 || 
+                (Number (works[p].wendd) >= o &&
+                 Number (works[p].wendm) == my_month+1 ))) {
+                arr[(i-1)%7][p] = 1;
+            } else {
+                arr[(i-1)%7][p] = 0;
+            }
+            console.log ("value: "+arr[(i-1)%7][p]); 
+            console.log ("========================"); 
+        }
+
 	}
+   for (wx=0; wx<len; wx++) {
+		var sbuf = "";
+		var ibuf = 0;
+        for (wy=0; wy<7; wy++) {
+            ibuf += arr[wy][wx];
+            if (arr[wy][wx] == 1)
+				sbuf += "<li class='"+ BGC[wx] +"'>"+works[wx].wname+"</li>";
+            else 
+                sbuf +="<li></li>"
+        }
+        if (ibuf != 0)
+            str += sbuf;
+    }
+
     $("#show_works_days").html (str);
     $("#gantt-month").html (month_name[my_month]);
     $("#gantt-year").html (my_year);

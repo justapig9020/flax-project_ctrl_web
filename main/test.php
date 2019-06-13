@@ -2,28 +2,21 @@
 <script tpye="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script>
 var arr = new Array ();
-$(document).ready (function (){
-    $("#b1").click (function () {
-        arr.push ($("#t1").val ());
-        str = "";
-        for (i in arr) {
-            str += arr[i];
-            str += " , ";
-        }
-        $("#d1").empty ();
-        $("#d1").html (str);
-    });
-    $("#b2").click (function (){
-        delete arr[$("#t1").val ()];
-        $("#d1").empty ();
-        $("#d1").html (str);
-    });
-});
+for (i=0; i<9; i++) {
+    arr [i] = new Array ();
+    for (o=0; o<9; o++) {
+        arr[i][o] = (i+1)*(o+1);
+    }
+}
+document.write ("gogo</br>");
+document.write (typeof (arr)+ "</br>");
+document.write (arr.length +  "</br>");
+document.write (arr[0].lehgth + "</br>");
+for (i=0; i<9; i++) {
+    for (o=0; o<9; o++) {
+        document.write (arr[i][o] + " ");
+    }
+    document.write ("</br>");
+}
+console.log (parseInt("06",10));
 </script>
-<input type="text" id="t1">
-</br>
-<input type="button" id="b1" value="add">
-<input type="button" id="b2" value="del">
-<div id="d1">
-<image src='image/loading.gif'>
-</div>
