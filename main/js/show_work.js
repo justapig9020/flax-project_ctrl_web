@@ -25,7 +25,10 @@ function daysMonth(month, year) {
 	}
 }
 //export 
-function refreshDate(){
+function refreshDate(works){
+    for (work in works) {
+        document.write ("name:" + work["wname"] + ", start_data: " + work["wstarty"] + "/" + work["wstartm"] + "/" + work["wstartd"]);
+    }
     var str = "";
 	var totalDay = daysMonth(my_month, my_year); // get total days of month
 	var firstDay = dayStart(my_month, my_year); 

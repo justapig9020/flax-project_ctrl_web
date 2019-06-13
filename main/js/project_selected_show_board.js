@@ -34,7 +34,13 @@ function show_works () {
     	success : function (response) {
            	//$('#show_works').append (response);
 	        //$("#show_works").fadeIn ();
-            refreshDate ();
+            for (work in response) {
+                for (item in work) {
+
+                }
+            }
+                
+            //refreshDate (response);
             $("#show_works").attr ("style","");
             //alert (1);
         }

@@ -31,18 +31,20 @@ if (isset ($_GET["pid"])) {
         foreach ($_FILES as $file) {
         // string 型態，表示上傳單一檔案
         // array 型態，表示上傳多個檔案
-        if (is_array($file['name'])) {
+            
             foreach ($file['name'] as $key => $value) {
-                $retNF = new_file ($file['name'][$key], $_SESSION["user"], $pid);
-                /*$files[$i]['name'] = $file['name'][$key];
-                $files[$i]['type'] = $file['type'][$key];
-                $files[$i]['tmp_name'] = $file['tmp_name'][$key];
-                $files[$i]['error'] = $file['error'][$key];
-                $files[$i]['size'] = $file['size'][$key];
-                $i++;*/
+                //echo "</br>======</br>";
+                //echo $key." : ".$value."</br>";
+                $retNF = new_file ($value, $_SESSION["user"], $pid);
+                if ($retNF >= 1) {
+                    $pname = get_Pname ($pid);
+                    $path = sprintf ("./users/%d/%s/%s", $_SESSION["user"], $pname, $value);
+                    //$path = escapeshellarg($path);
+                    //echo $file['tmp_name'][$key]." | ".$path;
+                    move_uploaded_file($file['tmp_name'][$key], $path);
+                }
             }
         }
-    }
     }
     if (isset ($_POST["wname"]) and
         isset ($_POST["wstart"]) and

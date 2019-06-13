@@ -1,4 +1,4 @@
 include/dbconf.php
-users/*
+main/users/*
 test.php
 main/templates_c/*

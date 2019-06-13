@@ -8,7 +8,7 @@ if (!isset ($__SQL__)) {
             $conf = sprintf('mysql:host=localhost;dbname=project_ctrl;charsetutf8;port=%d;',getDBPort());
             //echo $conf;
             $db = new PDO($conf,getDBUser(),getDBPw());
-		} catch (\PDOException $e) {
+		} catch (PDOException $e) {
 			echo "Error: ".$e."</br>";
             //return null;
             exit();
@@ -84,7 +84,7 @@ if (!isset ($__SQL__)) {
     {
         $db = str_con();
         //echo "in func</br>";
-        $retMess=NULL;
+        $retMess=-2;
         if ($db){
             $sel = "select status from do_proj where user_id=:uid and project_id=:pid";  
             try {
@@ -149,7 +149,7 @@ if (!isset ($__SQL__)) {
                                     $ins->bindParam(':pname', $pname);
     					            $ins->bindParam(':pintr',$pintr);
                                     $ins->execute();
-                                    $retMess = 1;
+                                    $retMess = 1;// 更新檔案
                                 }
                             } catch (PDOException $e){}
                         }else {
@@ -196,14 +196,15 @@ if (!isset ($__SQL__)) {
 		    			    $ins->bindParam(':uid',$uid);
                             $ins->execute();
                         }
-                        $retMess = "2";
+                        $retMess = 2; //create a new file done
                     } catch (PDOException $e){}
                 }
             } else {
-                $retMess = "-1";
+                $retMess = -1;
             }
-		}
-        //echo "in fun: ".$retV."</br>";
+        }   else {
+            $retMess = -3;
+        }
 		$db=null;
 		return $retMess;
     }
@@ -215,7 +216,7 @@ if (!isset ($__SQL__)) {
         $retMess=NULL;
 		if ($db){
             //echo "連線成功</br>";
-            $sel = "select * from project inner join do_proj on project.id = do_proj.project_id and do_proj.status = 0 where project.name = :pname and do_proj.user_id = :uid";
+            $sel = "select * from project inner join do_proj on project.id = do_proj.project_id and do_proj.status = 1 where project.name = :pname and do_proj.user_id = :uid";
             try {
 				$ins = $db->prepare($sel); 
                 if($ins){
@@ -223,19 +224,19 @@ if (!isset ($__SQL__)) {
 					$ins->bindParam(':pname',$pname);
                     $result = $ins->execute();
 					if($result){
-							$row = $ins->fetch(PDO::FETCH_ASSOC);
+							$rows = $ins->fetch(PDO::FETCH_ASSOC);
 					}else{
 						$error = $ins->errorInfo();
 						//echo "查詢失敗".$error[2];
                     }
                 }
             } catch (PDOException $e){}
-            echo "hello world";    
-            echo gettype ($row);
-            foreach ($row as $key=>$value) {
+            /*echo "hello world</br>";    
+            echo gettype ($rows);
+            foreach ($rows as $key=>$value) {
                 echo $key."/".$value;
-            }
-            if (!$row) {
+            }*/
+            if (!$rows) {
                 $sel = "insert into project
                         (name, intr) 
                         value 
@@ -277,7 +278,7 @@ if (!isset ($__SQL__)) {
                 $ndir = sprintf ("mkdir \"users/%s/%s\\\"",$uid,$pname);
                 echo shell_exec ($ndir);
                 $retMess = "專案新增完成";
-                //header ("location:./project.php");
+                header ("location:./project.php");
             } else {
                 $retMess = "專案已存在"; 
             } 

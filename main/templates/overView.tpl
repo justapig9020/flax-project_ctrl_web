@@ -8,7 +8,7 @@
     {/literal}
 </head>
 <body>
-<script src="jquery-3.4.1.js"></script>
+<script src="js/jquery-3.4.1.js"></script>
 <script src="js/header.js"></script>
 <!--<script src="js/works.js"></script>-->
 
