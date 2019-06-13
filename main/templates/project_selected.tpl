@@ -74,7 +74,6 @@ $(document).ready (function () {
     </br>
 
     <div class="row"> 
-    
     <div class="col-2">
     </br>
     </br>
@@ -95,43 +94,49 @@ $(document).ready (function () {
                     <!--<li class="list-group-item">{$row["uid"]}</li>-->
                 {/if}
             {/foreach}
-            {if $pro_ex eq 0 && $is_own eq 1}    
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
-            {/if}
-            <ul class="list-group">
-            <!--<li class="list-group-item list-group-item-dark text-center" id="mem_title"><b>O成員</b></li>-->
-            <li  type="button" class="btn btn-primary" data-toggle="modal"  id="mem_title"><b>成員</b></li>
-            <div id="mem_list">
-            {foreach $mems as $row}
-                {if $row["status"] eq "1"}
-                    <li class="list-group-item list-group-item-warning" title="組長" id="mem_list_lea">{$row["uid"]}</li>
-                {/if}
-                {if $row["status"] eq "2"}
-                    <li class="list-group-item list-group-item-info" title="指導" id="mem_list_mem" >{$row["uid"]}</li>
-                {/if}
-                {if $row["status"] eq "0"}
-                    <li class="list-group-item" title="成員" id="mem_list_mem" >{$row["uid"]}</li>
-                {/if}
-            {/foreach}
+            
+            {if $is_own eq 1}
+            <div class="btn-group dropleft" role="group">
+                <button id="btnGroupDrop3" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    成員
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除成員</button>
+                    {if $pro_ex eq 0 && $is_own eq 1}    
+                        <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
+                    {/if}
+                </div>
             </div>
-        </ul>
-
+            {/if}
+            <!--<li class="list-group-item list-group-item-dark text-center" id="mem_title"><b>O成員</b></li>-->
+            <ul class="list-group">
+                <div id="mem_list">
+                {foreach $mems as $row}
+                    {if $row["status"] eq "1"}
+                        <li class="list-group-item list-group-item-warning" title="組長" id="mem_list_lea">{$row["uid"]}</li>
+                    {/if}
+                    {if $row["status"] eq "2"}
+                        <li class="list-group-item list-group-item-info" title="指導" id="mem_list_mem" >{$row["uid"]}</li>
+                    {/if}
+                    {if $row["status"] eq "0"}
+                        <li class="list-group-item" title="成員" id="mem_list_mem" >{$row["uid"]}</li>
+                    {/if}
+                {/foreach}
+                </div>
+            </ul>
         </ul>
     </div>
+
     <div class="col-8">
-        <table>
-            <tr>
-                <td>
-                    <input type="button" id="show_files_button" value="顯示檔案">
-                </td>
-                <td>
-                    <input type="button" id="show_works_button" value="顯示工作">
-                </td>
-            </tr>
-        </table>
-        <div>
-            <div id="loading">
+        <div class="container">
+            <div class="btn-group col-4" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-dark" id="show_files_button">顯示檔案</button>
+                <button type="button" class="btn btn-dark" id="show_works_button">顯示工作</button>
             </div>
+        </div>
+        <div>
+            <div id="loading"></div>
             <div id="show_works">
                 <div style="background-color:orange;">
                     <h1 class="green" id="gantt-month">月份</h1>
@@ -158,16 +163,16 @@ $(document).ready (function () {
                     </div>
                 </div>
             </div>
-            <div id="show_files">
-            </div>
-         </div>
+            <div id="show_files"></div>
+        </div>
     </div>
+    
     <div class="col-2">
     </br>
     </br>
         <div class="btn-group-vertical">
             <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     檔案
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -176,7 +181,7 @@ $(document).ready (function () {
                 </div>
             </div>
             <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnGroupDrop2" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     工作
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
@@ -184,23 +189,12 @@ $(document).ready (function () {
                      <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除工作</button>
                 </div>
             </div>
-            {if $is_own eq 1}
-            <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop3" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    成員
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除成員</button>
-                </div>
-            </div>
-            {/if}
         </div>
     </div>
 </div>
 <!-- new_file -->
 <div class="modal fade" id="new_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">新增工作</h5>
@@ -208,18 +202,21 @@ $(document).ready (function () {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" enctype="multipart/form-data">
-                <!-- 限制上傳檔案的最大值 -->
+            <form class="form-new_file" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+            <!-- 限制上傳檔案的最大值 -->
                 <div id="file_list">
                     <!-- accept 限制上傳檔案類型。多檔案上傳 name 的屬性值須定義為 array -->
                     <input type="file" name="myFile[]" id="file_array" style="display: block;margin-bottom: 5px;">
                     <!-- 使用 html 5 實現單一上傳框可多選檔案方式，須新增 multiple 元素 -->
                     <!-- <input type="file" name="myFile[]" id="" accept="image/jpeg,image/jpg,image/gif,image/png" multiple> -->
                 </div>
-                <div>
-                    <input type="button" id="more_files" value="更多檔案">
-                </div>
-                <input type="submit" value="上傳檔案">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <input type="button" class="btn btn-secondary" id="more_files" value="更多檔案">
+                <input type="submit" class="btn btn-primary" value="上傳檔案">
+            </div>
             </form>
         </div>
     </div>

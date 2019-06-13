@@ -45,7 +45,7 @@ function d_select (dpid,mes,upname) {
 		<div class="col-sm-4">
 			<div class="list-group">
 				<a href="./project.php?pid={$row["pid"]}" class="list-group-item list-group-item-action">{$row["oid"]} / {$row["pname"]}</a>
-                <a class="list-group-item list-group-item-action list-group-item-danger text-center" onclick="d_select ({$row['pid']},'{$list_mes}','{$row["oid"]} / {$row["pname"]}')">{$list_mes}專案</a>
+                <button class="list-group-item list-group-item-action list-group-item-danger text-center" onclick="d_select ({$row['pid']},'{$list_mes}','{$row["oid"]} / {$row["pname"]}')">{$list_mes}專案</button>
                 </br>
             </div>
 		</div>
