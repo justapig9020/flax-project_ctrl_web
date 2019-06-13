@@ -10,6 +10,8 @@ var my_date = new Date();
 var my_year = my_date.getFullYear();
 var my_month = my_date.getMonth();
 var my_day = my_date.getDate();
+var BGC = ["black_font1","black_font2","black_font3","black_font4","black_font5",
+			"black_font6","black_font7","black_font8","black_font9","black_font10"];
 // get first day of month
 function dayStart(month, year) {
 	var tmpDate = new Date(year, month, 1);
@@ -60,7 +62,7 @@ function refreshDate(works){
                 for (wy=0; wy<7; wy++) {
                     ibuf += arr[wy][wx];
                     if (arr[wy][wx] == 1)
-sbuf += "<li class='green greenbox'>"+works[wx].wname+"</li>";
+						sbuf += "<li class='"+ BGC[wx] +"'>"+works[wx].wname+"</li>";
                     else 
                         sbuf +="<li></li>"
                 }
@@ -77,7 +79,7 @@ sbuf += "<li class='green greenbox'>"+works[wx].wname+"</li>";
 			myclass = " class='lightgrey'"; 
 		}else if (o==my_day && my_year==my_date.getFullYear()
                     && my_month==my_date.getMonth()){
-			myclass = " class='green greenbox'";
+			myclass = " class='black_font greenbox'";
 		}else{
 			myclass = " class='darkgrey'"; 
 		}
@@ -107,18 +109,18 @@ sbuf += "<li class='green greenbox'>"+works[wx].wname+"</li>";
 
 	}
    for (wx=0; wx<len; wx++) {
-                var sbuf = "";
-                var ibuf = 0;
-                for (wy=0; wy<7; wy++) {
-                    ibuf += arr[wy][wx];
-                    if (arr[wy][wx] == 1)
-sbuf += "<li class='green greenbox'>"+works[wx].wname+"</li>";
-                    else 
-                        sbuf +="<li></li>"
-                }
-                if (ibuf != 0)
-                    str += sbuf;
-            }
+		var sbuf = "";
+		var ibuf = 0;
+        for (wy=0; wy<7; wy++) {
+            ibuf += arr[wy][wx];
+            if (arr[wy][wx] == 1)
+				sbuf += "<li class='"+ BGC[wx] +"'>"+works[wx].wname+"</li>";
+            else 
+                sbuf +="<li></li>"
+        }
+        if (ibuf != 0)
+            str += sbuf;
+    }
 
     $("#show_works_days").html (str);
     $("#gantt-month").html (month_name[my_month]);
