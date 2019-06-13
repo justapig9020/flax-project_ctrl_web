@@ -17,7 +17,7 @@ function show_file (){
         }
     }
     );
-    $("#loading").append ("now loading");
+    $("#loading").html ("<img src='image/loading.gif'>");
 }
 
 function show_works () {
@@ -35,11 +35,12 @@ function show_works () {
            	//$('#show_works').append (response);
 	        //$("#show_works").fadeIn ();
             refreshDate ();
+            $("#show_works").attr ("style","");
             //alert (1);
         }
     }
     );
-    $("#loading").append ("now loading");
+    $("#loading").html ("<img src='image/loading.gif'>");
 }
 
 $(document).ready (function () {
@@ -51,7 +52,6 @@ $(document).ready (function () {
     
     $("#show_works_button").click ( function () {
         $("#show_files").empty ();
-        $("#show_works").attr ("style","");
         show_works ();
     });
 

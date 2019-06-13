@@ -25,4 +25,5 @@ $(document).ready (function (){
 <input type="button" id="b1" value="add">
 <input type="button" id="b2" value="del">
 <div id="d1">
+<image src='image/loading.gif'>
 </div>
