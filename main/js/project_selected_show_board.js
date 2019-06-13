@@ -1,6 +1,6 @@
-
+//import * as gantt from "js/show_work.js";
 function show_file (){
-    $("#show_board").empty ();
+    $("#show_works").attr ("style","display:none");
 	$.ajax ({
    		url: "./get_file.php",
 	    type: "POST",
@@ -12,8 +12,8 @@ function show_file (){
         	alert ('error');
 	    },
     	success : function (response) {
-            $("#show_board").html (response);
-	        $("#show_board").fadeIn ();
+            $("#show_files").html (response);
+	        $("#show_files").fadeIn ();
         }
     }
     );
@@ -21,7 +21,6 @@ function show_file (){
 }
 
 function show_works () {
-    $("#show_board").empty ();
     $.ajax ({
    		url: "./get_work.php",
 	    type: "POST",
@@ -33,8 +32,10 @@ function show_works () {
         	alert ('error');
 	    },
     	success : function (response) {
-           	$('#show_board').append (response);
-	        $("#show_board").fadeIn ();
+           	//$('#show_works').append (response);
+	        //$("#show_works").fadeIn ();
+            refreshDate ();
+            //alert (1);
         }
     }
     );
@@ -44,11 +45,13 @@ function show_works () {
 $(document).ready (function () {
 	
     window.onload = show_file();
-    $("#show_files").click ( function () { 
+    $("#show_files_button").click ( function () { 
         show_file ();
     }); 
     
-    $("#show_works").click ( function () {
+    $("#show_works_button").click ( function () {
+        $("#show_files").empty ();
+        $("#show_works").attr ("style","");
         show_works ();
     });
 

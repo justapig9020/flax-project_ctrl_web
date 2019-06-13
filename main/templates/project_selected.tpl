@@ -3,7 +3,8 @@
 <head>
 	<title>{#title#}_{#page#}</title>
    {literal}
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/show_work.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/normal.css"/>
 	<link rel="stylesheet" type="text/css" href="css/project.css"/>
    {/literal}
@@ -16,6 +17,7 @@
 <script>
 var pid = {$pid};
 </script>
+<script src="js/show_work.js"></script>
 <script src="js/project_selected_show_board.js"></script>
 {literal}
 <script>
@@ -74,6 +76,8 @@ $(document).ready (function () {
 <div class="row"> 
     
     <div class="col-2">
+    </br>
+    </br>
         <ul class="list-group">
         {*
         <li class="list-group-item list-group-item-warning text-center"><b>擁有者</b></li>
@@ -118,21 +122,49 @@ $(document).ready (function () {
         <table>
             <tr>
                 <td>
-                    <input type="button" id="show_files" value="顯示檔案">
+                    <input type="button" id="show_files_button" value="顯示檔案">
                 </td>
                 <td>
-                    <input type="button" id="show_works" value="顯示工作">
+                    <input type="button" id="show_works_button" value="顯示工作">
                 </td>
             </tr>
         </table>
         <div>
-            <div id="show_board">
+            <div id="show_works">
+                <div style="background-color:orange;">
+                    <h1 class="green" id="gantt-month">月份</h1>
+                    <h2 class="green small" id="gantt-year">年份</h2>
+                    <div style="border:2px black solid;padding:15px;">
+                        <a href="" id="prev">上個月</a>
+                        <a href="" id="next">下個月</a>
+                    </div>
+                    <div class="body">
+                        <div class="lightgrey body-list">
+                        <ul>
+                            <li>一</li>
+                            <li>二</li>
+                            <li>三</li>
+                            <li>四</li>
+                            <li>五</li>
+                            <li>六</li>
+                            <li>日</li>
+                        </ul>
+                        </div>
+                        <div class="darkgrey body-list">
+                        <ul id="show_works_days"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="show_files">
             </div>
             <div id="loading">
             </div>
          </div>
     </div>
     <div class="col-2">
+    </br>
+    </br>
         <div class="btn-group-vertical">
             <div class="btn-group dropright" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
