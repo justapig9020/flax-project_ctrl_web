@@ -223,13 +223,18 @@ if (!isset ($__SQL__)) {
 					$ins->bindParam(':pname',$pname);
                     $result = $ins->execute();
 					if($result){
-							$row = $ins->fetchall(PDO::FETCH_ASSOC);
+							$row = $ins->fetch(PDO::FETCH_ASSOC);
 					}else{
 						$error = $ins->errorInfo();
 						//echo "查詢失敗".$error[2];
                     }
                 }
             } catch (PDOException $e){}
+            echo "hello world";    
+            echo gettype ($row);
+            foreach ($row as $key=>$value) {
+                echo $key."/".$value;
+            }
             if (!$row) {
                 $sel = "insert into project
                         (name, intr) 
@@ -272,7 +277,7 @@ if (!isset ($__SQL__)) {
                 $ndir = sprintf ("mkdir \"users/%s/%s\\\"",$uid,$pname);
                 echo shell_exec ($ndir);
                 $retMess = "專案新增完成";
-                header ("location:./project.php");
+                //header ("location:./project.php");
             } else {
                 $retMess = "專案已存在"; 
             } 
