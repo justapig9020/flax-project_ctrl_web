@@ -27,10 +27,10 @@ if (isset ($_GET["pid"])) {
     $retNF = "";
     $page = "project_selected";
     $pid = $_GET["pid"];
-    
-    if (isset ($_POST["duid"])) {
-        rm_mem ($_POST["duid"], $_SESSION["user"], $pid) 
-    }
+    //echo $_POST["duid"];
+    //if (isset ($_POST["duid"])) {
+    //    rm_mem ($_POST["duid"], $_SESSION["user"], $pid) ;
+    //}
 
     if (isset ($_FILES)){
         foreach ($_FILES as $file) {
@@ -90,16 +90,16 @@ if (isset ($_GET["pid"])) {
      */
         $retMem = new_Mem ($_POST["mid"], $pid);
     }
-    $mems = get_Mems ($pid);
     if (isset ($_POST["wmon"])) { // select sork month
         $wmon = $_POST["wmon"];
     } else {
         $wmon = (int) date('m', strtotime('-0 month'));
     }
     $pname = get_Pname ($pid);
+    $mems = get_Mems ($pid);
+    $smarty->assign ("mems", $mems);
     $smarty->assign ("pname", $pname);
     $smarty->assign ("pid", $pid);
-    $smarty->assign ("mems", $mems);
     $smarty->assign ("retMem", $retMem);
     $smarty->assign ("retTea", $retTea);
     $smarty->assign ("retWor", $retWor);

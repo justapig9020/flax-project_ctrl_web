@@ -289,7 +289,37 @@ if (!isset ($__SQL__)) {
 
 
     }
-
+    function rm_mem ($duid, $uid, $pid) {
+        $db = str_con();
+        $retMess=NULL;
+		if ($db){
+            //echo "連線成功</br>";
+            $sel = "select status from do_proj where user_id=:uid and project_id = :pid";
+            try {
+				$ins = $db->prepare($sel); 
+                if($ins){
+					$ins->bindParam(':uid',$uid);
+					$ins->bindParam(':pid',$pid);
+                    $result = $ins->execute();
+					if($result){
+							$row = $ins->fetch(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+                    }
+                }
+                if ($row && $row["status"]==1) {
+                    $sel = "delete from do_proj where project_id = :pid and user_id = :duid"; 
+                    $ins = $db->prepare($sel); 
+                    if($ins){
+					    $ins->bindParam(':duid',$duid);
+					    $ins->bindParam(':pid',$pid);
+                        $result = $ins->execute();
+                    }
+                }
+            } catch (PDOException $e){}
+        }
+    }
     function rm_Proj ($uid, $pid) {
         $db = str_con();
         //echo "in func</br>";
