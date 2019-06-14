@@ -70,17 +70,19 @@ var pid = {$pid};
                     成員
                 </button>
                 <div id="mem_add_del_btn">
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#" id="d_mem">刪除成員</button>
-                    {if $pro_ex eq 0 && $is_own eq 1}    
-                        <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
-                    {/if}
-                </div>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                        <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
+                        <button type="button" class="dropdown-item btn btn-primary" id="d_mem">刪除成員</button>
+                        {if $pro_ex eq 0 && $is_own eq 1}    
+                            <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
+                        {/if}
+                    </div>
                 </div>
             </div>
             {else}
-                成員
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-dark text-center">成員列表</li>
+            </ul>
             {/if}
             <!--<li class="list-group-item list-group-item-dark text-center" id="mem_title"><b>O成員</b></li>-->
             <ul class="list-group">
@@ -99,6 +101,7 @@ var pid = {$pid};
                 <button type="button" class="btn btn-dark" id="show_works_button">顯示工作</button>
             </div>
         </div>
+        </br>
         <div>
             <div id="loading"></div>
             <div id="show_works">
@@ -131,24 +134,8 @@ var pid = {$pid};
     </br>
     </br>
         <div class="btn-group-vertical">
-            <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    檔案
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_file">新增檔案</button>
-                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除檔案</button>
-                </div>
-            </div>
-            <div class="btn-group dropright" role="group">
-                <button id="btnGroupDrop2" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    工作
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_work">新增工作</button>
-                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除工作</button>
-                </div>
-            </div>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#new_file">新增檔案</button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#new_work">新增工作</button>
         </div>
     </div>
 </div>
