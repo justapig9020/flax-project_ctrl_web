@@ -10,7 +10,9 @@ if (checkIn()) {
         $pid = $_POST["pid"];
         if ( doing_proj ($_SESSION["user"], $pid)) {
             $files = get_Files ($pid);
+            $path = trim($_POST["path"]);
             $smarty->assign ("files", $files);
+            $smarty->assign ("path", $_POST["path"]);
         }
     }
 }

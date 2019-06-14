@@ -61,10 +61,14 @@ function refreshDate(works){
                 var ibuf = 0;
                 for (wy=0; wy<7; wy++) {
                     ibuf += arr[wy][wx];
-                    if (arr[wy][wx] == 1)
-						sbuf += "<li class='"+ BGC[wx] +"'>"+works[wx].wname+"</li>";
-                    else 
+                    if (arr[wy][wx] == 1) {
+						sbuf += "<li class='"+ BGC[wx%10] +"' title='"+works[wx].wintr+"'>";
+                        if (ibuf == 1)
+                            sbuf += works[wx].wname;
+                        sbuf += "</li>";
+                    } else {
                         sbuf +="<li></li>"
+                    }
                 }
                 if (ibuf != 0)
                     str += sbuf;

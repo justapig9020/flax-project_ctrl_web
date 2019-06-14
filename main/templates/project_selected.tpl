@@ -30,9 +30,9 @@ $(document).ready (function () {
 
     });
 
-    $("#mem_list").click (function (event) {
+    $("[id=mem_list_mem]").click (function (event) {
         $target = $(event.target);
-        if (ms == 1 && $target.is("#mem_list_mem")) {
+        if (ms == 1 ) {
             duid = $target.html();
             if (window.confirm("確定要移除成員" + duid)) {
                 $.POST ("project.php", {"duid": duid});
@@ -40,15 +40,19 @@ $(document).ready (function () {
             }
         }
     });
-    $("#mem_title").click (function () {
+    $("#d_mem").click (function () {
         if (ms == 0) {
             ms = 1;
-            $("#mem_title").html ("<b>刪除成員</b>")
-            $("#mem_list").html(ml);
-        } else {
+            $("#btnGroupDrop3").html ("<b>刪除成員</b>")
+            //$("#mem_list").html(ml);
+        }    
+    });
+    $("#btnGroupDrop3").click (function (){
+        if (ms == 1) {
             ms = 0;
-            $("#mem_title").html ("<b>成員</b>")
+            $("#btnGroupDrop3").html ("成員")
         }
+
     });
 });
 </script>
@@ -57,7 +61,7 @@ $(document).ready (function () {
     <div class="container text-center">
         <div class="row">
             <div class="col-sm">
-                <p class="h1">
+                <p class="h1" id="proj_path">
                 {$is_own = 0}
                 {foreach $mems as $row}
                     {if $row["status"] eq 1}
@@ -102,7 +106,7 @@ $(document).ready (function () {
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除成員</button>
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#" id="d_mem">刪除成員</button>
                     {if $pro_ex eq 0 && $is_own eq 1}    
                         <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
                     {/if}
@@ -141,10 +145,6 @@ $(document).ready (function () {
                 <div style="background-color:orange;">
                     <h1 class="green" id="gantt-month">月份</h1>
                     <h2 class="green small" id="gantt-year">年份</h2>
-                    <div style="border:2px black solid;padding:15px;">
-                        <a href="" id="prev">上個月</a>
-                        <a href="" id="next">下個月</a>
-                    </div>
                     <div class="body">
                         <div class="lightgrey body-list">
                         <ul>

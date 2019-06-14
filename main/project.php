@@ -27,6 +27,11 @@ if (isset ($_GET["pid"])) {
     $retNF = "";
     $page = "project_selected";
     $pid = $_GET["pid"];
+    
+    if (isset ($_POST["duid"])) {
+        rm_mem ($_POST["duid"], $_SESSION["user"], $pid) 
+    }
+
     if (isset ($_FILES)){
         foreach ($_FILES as $file) {
         // string 型態，表示上傳單一檔案
