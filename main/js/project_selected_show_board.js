@@ -1,12 +1,14 @@
 //import * as gantt from "js/show_work.js";
-function show_file (){
+function show_file (path){
+    path = path.trim ();
     $("#show_works").attr ("style","display:none");
 	$.ajax ({
    		url: "./get_file.php",
 	    type: "POST",
         async: true,
         data: {
-            pid: pid
+            pid: pid,
+            path: path
 	    },
     	error: function (xhr) {
         	alert ('error');
@@ -51,9 +53,9 @@ function show_works () {
 
 $(document).ready (function () {
 	
-    window.onload = show_file();
+    window.onload = show_file ($("#proj_path").html ());
     $("#show_files_button").click ( function () { 
-        show_file ();
+        show_file ($("#proj_path").html ());
     }); 
     
     $("#show_works_button").click ( function () {

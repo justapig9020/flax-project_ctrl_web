@@ -20,44 +20,13 @@ var pid = {$pid};
 <script src="js/show_work.js"></script>
 <script src="js/project_selected_show_board.js"></script>
 {literal}
-<script>
-var ms = 0;
-$(document).ready (function () {
-    var ml = $("#mem_list").html ();
-    $("#more_files").click (function (){
-        str = '<input type="file" name="myFile[]" id="file_array" style="display: block;margin-bottom: 5px;">';
-        $("#file_list").append (str);
-
-    });
-
-    $("#mem_list").click (function (event) {
-        $target = $(event.target);
-        if (ms == 1 && $target.is("#mem_list_mem")) {
-            duid = $target.html();
-            if (window.confirm("確定要移除成員" + duid)) {
-                $.POST ("project.php", {"duid": duid});
-                location.reload();
-            }
-        }
-    });
-    $("#mem_title").click (function () {
-        if (ms == 0) {
-            ms = 1;
-            $("#mem_title").html ("<b>刪除成員</b>")
-            $("#mem_list").html(ml);
-        } else {
-            ms = 0;
-            $("#mem_title").html ("<b>成員</b>")
-        }
-    });
-});
-</script>
+<script src="js/show_mem.js"></script>
 {/literal}
 <main role="main" class="container">
     <div class="container text-center">
         <div class="row">
             <div class="col-sm">
-                <p class="h1">
+                <p class="h1" id="proj_path">
                 {$is_own = 0}
                 {foreach $mems as $row}
                     {if $row["status"] eq 1}
@@ -100,29 +69,24 @@ $(document).ready (function () {
                 <button id="btnGroupDrop3" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     成員
                 </button>
+                <div id="mem_add_del_btn">
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
                     <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Mem">新增成員</button>
-                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#">刪除成員</button>
+                    <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#" id="d_mem">刪除成員</button>
                     {if $pro_ex eq 0 && $is_own eq 1}    
                         <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#new_Tea">新增指導員</button>
                     {/if}
                 </div>
+                </div>
             </div>
+            {else}
+                成員
             {/if}
             <!--<li class="list-group-item list-group-item-dark text-center" id="mem_title"><b>O成員</b></li>-->
             <ul class="list-group">
                 <div id="mem_list">
-                {foreach $mems as $row}
-                    {if $row["status"] eq "1"}
-                        <li class="list-group-item list-group-item-warning" title="組長" id="mem_list_lea">{$row["uid"]}</li>
-                    {/if}
-                    {if $row["status"] eq "2"}
-                        <li class="list-group-item list-group-item-info" title="指導" id="mem_list_mem" >{$row["uid"]}</li>
-                    {/if}
-                    {if $row["status"] eq "0"}
-                        <li class="list-group-item" title="成員" id="mem_list_mem" >{$row["uid"]}</li>
-                    {/if}
-                {/foreach}
+                </div>
+                <div id="mem_loading">
                 </div>
             </ul>
         </ul>
@@ -141,10 +105,6 @@ $(document).ready (function () {
                 <div style="background-color:orange;">
                     <h1 class="green" id="gantt-month">月份</h1>
                     <h2 class="green small" id="gantt-year">年份</h2>
-                    <div style="border:2px black solid;padding:15px;">
-                        <a href="" id="prev">上個月</a>
-                        <a href="" id="next">下個月</a>
-                    </div>
                     <div class="body">
                         <div class="lightgrey body-list">
                         <ul>

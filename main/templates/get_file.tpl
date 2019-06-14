@@ -4,7 +4,8 @@
             <th scope="col">作者</th>
             <th scope="col">名稱</th>
             <th scope="col">創建時間</th>
-            <th scope="col">權限</th>
+            <th scope="col"></th>
+            <!--<th scope="col">權限</th>-->
         </tr>
     </thead>
     <tbody>
@@ -13,12 +14,13 @@
             <th scope="row">{$row["oid"]}</th>
             <th scope="row">{$row["fname"]}</th>
             <th scope="row">{$row["ftime"]}</th>
-            <th scope="row">{$row["fpre"]}</th>
+            <th scope="row"><a href="users/{$path}/{$row["fname"]}" download="{$row["fname"]}">下載</a></th>
+            <!--<th scope="row">{$row["fpre"]}</th>-->
         </tr>
         {/foreach}
-        {if !$files}
+        {*{if !$files}
             尚無檔案
-        {/if}
+        {/if}*}
     </tbody>
 </table>
 

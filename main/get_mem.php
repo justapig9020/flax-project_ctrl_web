@@ -4,17 +4,18 @@ require '../include/sql.php';
 require '../include/network.php';
 require "../model/get.php";
 $smarty = new Smarty;
-$files = NULL;
+$mems = NULL;
 if (checkIn()) {
     if ( isset ($_POST["pid"])) {
         $pid = $_POST["pid"];
         if ( doing_proj ($_SESSION["user"], $pid)) {
-            $files = get_Files ($pid);
-            $path = trim($_POST["path"]);
-            $smarty->assign ("files", $files);
-            $smarty->assign ("path", $_POST["path"]);
+            if (isset ($_POST["duid"])) {
+                rm_mem ($_POST["duid"], $_SESSION["user"], $pid);
+            }
+            $mems = get_Mems ($pid);
+            $smarty->assign ("mems", $mems);
         }
     }
 }
-$smarty->display ("templates/get_file.tpl")
+$smarty->display ("templates/get_mem.tpl")
 ?>
