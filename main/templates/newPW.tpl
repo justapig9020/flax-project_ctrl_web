@@ -10,24 +10,25 @@
 </head>
 <body class="text-center">
 <script src="js/header.js"></script>
-<header>
-</header>
 <div class="container">
-	<form class="form-config" id="config" name="form1" method="post" action="">
+	<form class="form-newPW" id="config" name="form1" method="post" action="">
 		<div class="form-row">
-			<div class="form-group col-md-12">
-				<input class="form-control" type="text" name="" placeholder="請輸入舊密碼" autofocus="" required="">
+            <div class="form-group col-md-12">
+				<input class="form-control" type="password" name="oldpw" placeholder="請輸入舊密碼" autofocus="" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="form-control" type="text" name="" placeholder="請輸入新密碼">
+				<input class="form-control" type="password" name="npw" placeholder="請輸入新密碼" required="">
+			</div>
+			<div class="form-group col-md-12">
+				<input class="form-control" type="password" name="rnpw" placeholder="請再輸入新密碼">
 			</div>
 			<div class="form-group col-md-12">
 				<input class="btn btn-lg btn-primary btn-block" type="submit" value="更改密碼"></input>
 			</div>
 		</div>			
 		<div class="form-group col-md-12">
-			{if $retMesse neq ""}
-				<span class="badge badge-pill badge-warning">{$retMesse}</span>
+			{if $newPW_retM neq ""}
+				<span class="badge badge-pill badge-warning">{$newPW_retM}</span>
 			{/if}
 		</div>
 	</form>
