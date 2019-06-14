@@ -20,7 +20,7 @@
 				<input class="form-control" type="password" name="npw" placeholder="請輸入新密碼" required="">
 			</div>
 			<div class="form-group col-md-12">
-				<input class="form-control" type="password" name="rnpw" placeholder="請再輸入新密碼">
+				<input class="form-control" type="password" name="rnpw" placeholder="請再輸入新密碼" required="">
 			</div>
 			<div class="form-group col-md-12">
 				<input class="btn btn-lg btn-primary btn-block" type="submit" value="更改密碼"></input>
