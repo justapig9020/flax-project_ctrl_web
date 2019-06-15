@@ -16,7 +16,7 @@ if(isset($_POST['npw'])
             $db = str_con();
             if ($db)
             {
-                $sel = "select * from user where pw=:oldpw";
+                $sel = "select * from user where (pw=:oldpw and id=:id)";
                 try 
                 {
                     $ins = $db->prepare($sel);
@@ -24,6 +24,7 @@ if(isset($_POST['npw'])
                     {
                         $key = hash('sha256',$oldpw);
                         $ins->bindParam(':oldpw',$key);
+                        $ins->bindParam(':id',$_SESSION["user"]);
                         $result = $ins->execute();
                         if($result)
                         {
