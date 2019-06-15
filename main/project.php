@@ -43,7 +43,8 @@ if (isset ($_GET["pid"])) {
                 $retNF = new_file ($value, $_SESSION["user"], $pid);
                 if ($retNF >= 1) {
                     $pname = get_Pname ($pid);
-                    $path = sprintf ("./users/%d/%s/%s", $_SESSION["user"], $pname, $value);
+                    $poid = get_poid ($pid);
+                    $path = sprintf ("./users/%d/%s/%s", $poid, $pname, $value);
                     //$path = escapeshellarg($path);
                     //echo $file['tmp_name'][$key]." | ".$path;
                     move_uploaded_file($file['tmp_name'][$key], $path);

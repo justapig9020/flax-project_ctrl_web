@@ -15,7 +15,43 @@ if (!isset ($__SQL__)) {
 		} 	
 		return $db;
     }
-
+    function get_poid ($pid)
+	{
+		$db = str_con();
+        //echo "in func</br>";
+        $retV=NULL;
+		if ($db){
+			//echo "連線成功</br>";
+			$sel = "select user_id as oid from do_proj where project_id = :pid and status = 1";
+			try {
+				$ins = $db->prepare($sel); 
+				if($ins){
+					$ins->bindParam(':pid',$pid);
+					$result = $ins->execute();
+					if($result){
+							$row = $ins->fetchall(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+					}
+				}
+			} catch (PDOException $e){
+				
+			}
+			if(!$row){
+				$retM = "無此專案";
+			}else{
+				//echo count($row);
+				//$row as $key=>$value;
+				$retV = $row[0]["oid"];
+			}
+		$result=null;
+		$row=null;
+		$db=null;
+		}
+        //echo "in fun: ".$retV."</br>";
+		return $retV;
+    }
     function get_pid ($pname,$oid)
 	{
 		$db = str_con();
@@ -606,16 +642,20 @@ if (!isset ($__SQL__)) {
                     where project.id in 
                     (select project_id from 
                     do_proj where user_id = :uid) " ;
+                    
             if ($mid != 0)
                 $sel = $sel."and modify.id < :mid";
             if ($pid != 0)
                 $sel = $sel."and project.id = :pid"; 
-            $sel = $sel."order by modify.id DESC limit 5;";
+            $sel = $sel." order by modify.id DESC limit 10;";
             try {
 				$ins = $db->prepare($sel); 
                 if($ins){
-                    if ($mid != 0)
+                    if ($mid != 0) {
+                        //echo $sel."</br>";
+                       //echo $mid."</br>";
                         $ins->bindParam(':mid',$mid);
+                    }   
                     if ($pid != 0)
 					    $ins->bindParam(':pid',$pid);
 					$ins->bindParam(':uid',$uid);
