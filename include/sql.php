@@ -570,6 +570,72 @@ if (!isset ($__SQL__)) {
 		$db=null;
 		return $retMess;
     }
+    
+    function get_mo ($pid, $uid, $mid)
+    {
+        /*
+         *  mid
+         *  muid
+         *  mdo
+         *  mfname
+         *  mpoid
+         *  mpname
+         *  mtime
+         *  
+         */
+        $row = NULL;
+        $db = str_con();
+        $retV=NULL;
+		if ($db){
+			//echo "連線成功</br>";
+            $sel = "select do1.user_id as mpoid,
+                    project.name as mpname, 
+                    file.name as mfname, 
+                    modify.user_id as muid, 
+                    modify.time as mtime, 
+                    modify.do as mdo, 
+                    modify.id as mid 
+                    from project 
+                    inner join do_proj as do1 
+                    on do1.project_id = project.id and 
+                    do1.status = 1 
+                    inner join file on 
+                    file.project_id = project.id 
+                    inner join modify on 
+                    modify.file_id = file.id 
+                    where project.id in 
+                    (select project_id from 
+                    do_proj where user_id = :uid) " ;
+            if ($mid != 0)
+                $sel = $sel."and modify.id < :mid";
+            if ($pid != 0)
+                $sel = $sel."and project.id = :pid"; 
+            $sel = $sel."order by modify.id DESC limit 5;";
+            try {
+				$ins = $db->prepare($sel); 
+                if($ins){
+                    if ($mid != 0)
+                        $ins->bindParam(':mid',$mid);
+                    if ($pid != 0)
+					    $ins->bindParam(':pid',$pid);
+					$ins->bindParam(':uid',$uid);
+                    $result = $ins->execute();
+                    if($result){
+					    $row = $ins->fetchall(PDO::FETCH_ASSOC);
+					}else{
+						$error = $ins->errorInfo();
+						//echo "查詢失敗".$error[2];
+					}
+				}
+			} catch (PDOException $e){
+				
+			}
+		$result=null;
+		$db=null;
+		}
+        //echo "in fun: ".$retV."</br>";
+		return $row;
+    }
 
     function get_premission ($pname,$oid,$uid)
 	{
