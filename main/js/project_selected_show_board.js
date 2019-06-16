@@ -65,7 +65,18 @@ $(document).ready (function () {
 
     $(document).ajaxComplete (function(){
         $("#loading").empty ();
-    });   
+    });
+    $("#new_file_btn").click (function(){
+        str = '<input type="file" name="myFile[]" id="file_array_last" style="display: block;margin-bottom: 5px;">';
+        $("#file_list").html (str);
+	    $("#file_list").fadeIn ();
+
+    });
+    $("#more_files").click (function () {
+        str = '<input type="file" name="myFile[]" id="file_array" style="display: block;margin-bottom: 5px;">';
+        $("#file_list").append (str);
+	    $("#file_list").fadeIn ();
+    });
 });
 
 

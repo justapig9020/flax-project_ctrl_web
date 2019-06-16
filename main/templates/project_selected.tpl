@@ -134,7 +134,7 @@ var pid = {$pid};
     </br>
     </br>
         <div class="btn-group-vertical">
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#new_file">新增檔案</button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#new_file" id="new_file_btn">新增檔案</button>
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#new_work">新增工作</button>
         </div>
     </div>
