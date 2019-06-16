@@ -1,0 +1,5 @@
+ErrorDocument 403 http://localhost/nonono.php
+php_flag engine off
+Options -Indexes
+order allow,deny
+deny from all
