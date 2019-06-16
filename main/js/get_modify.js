@@ -42,7 +42,9 @@ function show_modify (pid) {
             var i;
             for (i=0; i<len; i++) {
                 str +=
-                '<a href="./project.php?pid=response[i].mid" class="list-group-item list-group-item-action">\
+                '<a href="./project.php?pid=';
+                str += response[i].mpid;
+                str += '" class="list-group-item list-group-item-action">\
                     <div class="d-flex w-100 justify-content-between" >\
                         <h5 class="mb-1">' + response[i].mpoid + "/" + response[i].mpname + '</h5>\
                         <small class="text-muted">' + response[i].mtime + '</small>\

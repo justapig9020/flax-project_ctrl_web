@@ -625,6 +625,7 @@ if (!isset ($__SQL__)) {
 		if ($db){
 			//echo "連線成功</br>";
             $sel = "select do1.user_id as mpoid,
+                    project.id as mpid,
                     project.name as mpname, 
                     file.name as mfname, 
                     modify.user_id as muid, 
